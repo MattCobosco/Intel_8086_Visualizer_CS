@@ -96,7 +96,7 @@ namespace Intel8086
             }
         }
 
-        private void MovCommand(string regOne, string regTwo)
+        private void MovCommand(string regOne, string regTwo) // method for moving value of one index to another index // HACK: Find a less retarded way to move values in registers - perhaps lists / dictionaries with elements displayed in textboxes ?
         {
             if (regOne == regTwo) // if user tries to move values between the same index, an error message box appears
             {
@@ -117,7 +117,7 @@ namespace Intel8086
 
                 if (XRegList.Contains(regOne) && XRegList.Contains(regTwo)) // if both registers given in the mov command belong to the X register (16bit) index list then it's possible to move the value
                 {
-                    if (regOne == "ax" && regTwo == "bx") // HACK: Find a less retarded way to move values in registers - perhaps lists with elements displayed in textboxes?
+                    if (regOne == "ax" && regTwo == "bx") 
                     {
                         AX_Textbox.Text = BX_Textbox.Text;
                     }
@@ -166,11 +166,11 @@ namespace Intel8086
                         DX_Textbox.Text = DX_Textbox.Text;
                     }
 
-                    EqualizeX_HL();
+                    EqualizeX_HL(); // update the H and L registers with the corresponding values X register
                 }
                 else if (HLRegList.Contains(regOne) && HLRegList.Contains(regTwo)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
                 {
-                    if (regOne == "al" && regTwo == "bl") // HACK: Find a less retarded way to move values in registers - perhaps lists with elements displayed in textboxes?
+                    if (regOne == "al" && regTwo == "bl")
                     {
                         AL_Textbox.Text = BL_Textbox.Text;
                     }
@@ -401,7 +401,7 @@ namespace Intel8086
                     }
                     else if (regOne == "dh" && regTwo == "ch")
                 
-                    EqualizeHL_X();
+                    EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
                 }
                 else // it's impossible to move values in all other instances where the user provides two register indexes => the error popup message box will be displayed to the user
                 {
@@ -411,7 +411,7 @@ namespace Intel8086
             }
         }
 
-        private void MovCommand(string regOne, int regTwo) /* TODO: create option to add values to the register with mov */
+        private void MovCommand(string regOne, int regTwo) /* method to add values to the register with mov */ //HACK: Find a better way to do this
         {
             List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
                 {
@@ -423,13 +423,13 @@ namespace Intel8086
                     "ah", "bh", "ch", "dh", "al", "bl", "cl", "dl"
                 };
 
-            if (XRegList.Contains(regOne) || HLRegList.Contains(regOne))
+            if (XRegList.Contains(regOne) || HLRegList.Contains(regOne)) // check if the register index provided in the command exists
             {
-                if (XRegList.Contains(regOne))
+                if (XRegList.Contains(regOne)) // check if it's for the X register
                 {
-                    string Hex4 = regTwo.ToString("X4");
+                    string Hex4 = regTwo.ToString("X4"); // convert the into into a 4-digit hex
 
-                    if (regOne == "ax")
+                    if (regOne == "ax") // change the requested register
                     {
                         AX_Textbox.Text = Hex4;
                     }
@@ -448,11 +448,11 @@ namespace Intel8086
 
                     EqualizeX_HL();
                 }
-                else if (HLRegList.Contains(regOne))
+                else // if it's not the X register then it must be the H/L register
                 {
-                    string Hex2 = regTwo.ToString("X2");
+                    string Hex2 = regTwo.ToString("X2"); // generate a 2-digit hex 
 
-                    if (regOne == "al")
+                    if (regOne == "al") // and put it in the requested register
                     {
                         AL_Textbox.Text = Hex2;
                     }
@@ -485,12 +485,12 @@ namespace Intel8086
                         DH_Textbox.Text = Hex2;
                     }
 
-                    EqualizeHL_X();
+                    EqualizeHL_X(); //
                 }
             }
             else
             {
-                MessageBox.Show("Wrong command. \nWrong register index", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Wrong command. \nWrong register index.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
