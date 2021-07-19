@@ -42,10 +42,10 @@ namespace Intel8086
         {
             // input random 4-digit hex values into X registers;
             Random random = new Random();
-            int numAX = random.Next(0,65536);
-            int numBX = random.Next(0, 65536);
-            int numCX = random.Next(0, 65536);
-            int numDX = random.Next(0, 65536);
+            int numAX = random.Next(0,65535);
+            int numBX = random.Next(0, 65535);
+            int numCX = random.Next(0, 65535);
+            int numDX = random.Next(0, 65535);
             string hexStringAX = numAX.ToString("X");
             string hexStringBX = numBX.ToString("X");
             string hexStringCX = numCX.ToString("X");
