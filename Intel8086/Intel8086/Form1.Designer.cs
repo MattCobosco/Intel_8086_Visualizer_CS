@@ -29,316 +29,315 @@ namespace Intel8086
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.CLI_TextBox = new System.Windows.Forms.TextBox();
-            this.AH_TextBox = new System.Windows.Forms.TextBox();
-            this.AL_TextBox = new System.Windows.Forms.TextBox();
-            this.BH_TextBox = new System.Windows.Forms.TextBox();
-            this.AX_TextBox = new System.Windows.Forms.TextBox();
-            this.BL_TextBox = new System.Windows.Forms.TextBox();
-            this.CH_TextBox = new System.Windows.Forms.TextBox();
-            this.CL_TextBox = new System.Windows.Forms.TextBox();
-            this.DH_TextBox = new System.Windows.Forms.TextBox();
-            this.DL_TextBox = new System.Windows.Forms.TextBox();
-            this.BX_TextBox = new System.Windows.Forms.TextBox();
-            this.CX_TextBox = new System.Windows.Forms.TextBox();
-            this.DX_TextBox = new System.Windows.Forms.TextBox();
-            this.AX_Label = new System.Windows.Forms.Label();
-            this.BX_Label = new System.Windows.Forms.Label();
-            this.CX_Label = new System.Windows.Forms.Label();
-            this.DX_Label = new System.Windows.Forms.Label();
-            this.AH_Label = new System.Windows.Forms.Label();
-            this.BH_Label = new System.Windows.Forms.Label();
-            this.CH_Label = new System.Windows.Forms.Label();
-            this.DH_Label = new System.Windows.Forms.Label();
-            this.AL_Label = new System.Windows.Forms.Label();
-            this.BL_Label = new System.Windows.Forms.Label();
-            this.CL_Label = new System.Windows.Forms.Label();
-            this.DL_Label = new System.Windows.Forms.Label();
-            this.CLI_Label = new System.Windows.Forms.Label();
-            this.Commands_Label = new System.Windows.Forms.Label();
-            this.Top_Label = new System.Windows.Forms.Label();
+            this.AX_Textbox = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.BX_Textbox = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.CX_Textbox = new System.Windows.Forms.TextBox();
+            this.DX_Textbox = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.AX_Lbl = new System.Windows.Forms.Label();
+            this.BX_Lbl = new System.Windows.Forms.Label();
+            this.CX_Lbl = new System.Windows.Forms.Label();
+            this.DX_Lbl = new System.Windows.Forms.Label();
+            this.AH_Lbl = new System.Windows.Forms.Label();
+            this.BH_Lbl = new System.Windows.Forms.Label();
+            this.CH_Lbl = new System.Windows.Forms.Label();
+            this.DH_Lbl = new System.Windows.Forms.Label();
+            this.AL_Lbl = new System.Windows.Forms.Label();
+            this.BL_Lbl = new System.Windows.Forms.Label();
+            this.CL_Lbl = new System.Windows.Forms.Label();
+            this.DL_Lbl = new System.Windows.Forms.Label();
+            this.CLI_Textbox = new System.Windows.Forms.TextBox();
+            this.Send_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CLI_TextBox
+            // AX_Textbox
             // 
-            this.CLI_TextBox.Location = new System.Drawing.Point(69, 225);
-            this.CLI_TextBox.Name = "CLI_TextBox";
-            this.CLI_TextBox.Size = new System.Drawing.Size(439, 23);
-            this.CLI_TextBox.TabIndex = 0;
+            this.AX_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AX_Textbox.Location = new System.Drawing.Point(44, 24);
+            this.AX_Textbox.Name = "AX_Textbox";
+            this.AX_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.AX_Textbox.TabIndex = 0;
+            this.AX_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // AH_TextBox
+            // textBox2
             // 
-            this.AH_TextBox.Location = new System.Drawing.Point(292, 59);
-            this.AH_TextBox.Name = "AH_TextBox";
-            this.AH_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.AH_TextBox.TabIndex = 1;
-            this.AH_TextBox.TextChanged += new System.EventHandler(this.AH_TextBox_TextChanged);
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.Location = new System.Drawing.Point(288, 24);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(63, 29);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // AL_TextBox
+            // textBox3
             // 
-            this.AL_TextBox.Location = new System.Drawing.Point(436, 59);
-            this.AL_TextBox.Name = "AL_TextBox";
-            this.AL_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.AL_TextBox.TabIndex = 2;
+            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.Location = new System.Drawing.Point(288, 73);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(63, 29);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BH_TextBox
+            // BX_Textbox
             // 
-            this.BH_TextBox.Location = new System.Drawing.Point(292, 88);
-            this.BH_TextBox.Name = "BH_TextBox";
-            this.BH_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.BH_TextBox.TabIndex = 3;
+            this.BX_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BX_Textbox.Location = new System.Drawing.Point(44, 73);
+            this.BX_Textbox.Name = "BX_Textbox";
+            this.BX_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.BX_Textbox.TabIndex = 3;
+            this.BX_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // AX_TextBox
+            // textBox5
             // 
-            this.AX_TextBox.Location = new System.Drawing.Point(69, 59);
-            this.AX_TextBox.Name = "AX_TextBox";
-            this.AX_TextBox.Size = new System.Drawing.Size(122, 23);
-            this.AX_TextBox.TabIndex = 4;
-            this.AX_TextBox.TextChanged += new System.EventHandler(this.AX_TextBox_TextChanged);
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox5.Location = new System.Drawing.Point(288, 123);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(63, 29);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BL_TextBox
+            // CX_Textbox
             // 
-            this.BL_TextBox.Location = new System.Drawing.Point(436, 88);
-            this.BL_TextBox.Name = "BL_TextBox";
-            this.BL_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.BL_TextBox.TabIndex = 5;
+            this.CX_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CX_Textbox.Location = new System.Drawing.Point(44, 123);
+            this.CX_Textbox.Name = "CX_Textbox";
+            this.CX_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.CX_Textbox.TabIndex = 5;
+            this.CX_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CH_TextBox
+            // DX_Textbox
             // 
-            this.CH_TextBox.Location = new System.Drawing.Point(292, 117);
-            this.CH_TextBox.Name = "CH_TextBox";
-            this.CH_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.CH_TextBox.TabIndex = 6;
+            this.DX_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DX_Textbox.Location = new System.Drawing.Point(44, 172);
+            this.DX_Textbox.Name = "DX_Textbox";
+            this.DX_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.DX_Textbox.TabIndex = 6;
+            this.DX_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CL_TextBox
+            // textBox8
             // 
-            this.CL_TextBox.Location = new System.Drawing.Point(436, 117);
-            this.CL_TextBox.Name = "CL_TextBox";
-            this.CL_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.CL_TextBox.TabIndex = 7;
+            this.textBox8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox8.Location = new System.Drawing.Point(288, 172);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(63, 29);
+            this.textBox8.TabIndex = 7;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // DH_TextBox
+            // textBox9
             // 
-            this.DH_TextBox.Location = new System.Drawing.Point(292, 146);
-            this.DH_TextBox.Name = "DH_TextBox";
-            this.DH_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.DH_TextBox.TabIndex = 8;
+            this.textBox9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox9.Location = new System.Drawing.Point(470, 172);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(63, 29);
+            this.textBox9.TabIndex = 8;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // DL_TextBox
+            // textBox10
             // 
-            this.DL_TextBox.Location = new System.Drawing.Point(436, 146);
-            this.DL_TextBox.Name = "DL_TextBox";
-            this.DL_TextBox.Size = new System.Drawing.Size(72, 23);
-            this.DL_TextBox.TabIndex = 9;
+            this.textBox10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox10.Location = new System.Drawing.Point(470, 24);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(63, 29);
+            this.textBox10.TabIndex = 9;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // BX_TextBox
+            // textBox11
             // 
-            this.BX_TextBox.Location = new System.Drawing.Point(69, 88);
-            this.BX_TextBox.Name = "BX_TextBox";
-            this.BX_TextBox.Size = new System.Drawing.Size(122, 23);
-            this.BX_TextBox.TabIndex = 10;
+            this.textBox11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox11.Location = new System.Drawing.Point(470, 73);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(63, 29);
+            this.textBox11.TabIndex = 10;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CX_TextBox
+            // textBox12
             // 
-            this.CX_TextBox.Location = new System.Drawing.Point(69, 117);
-            this.CX_TextBox.Name = "CX_TextBox";
-            this.CX_TextBox.Size = new System.Drawing.Size(122, 23);
-            this.CX_TextBox.TabIndex = 11;
+            this.textBox12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox12.Location = new System.Drawing.Point(470, 123);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(63, 29);
+            this.textBox12.TabIndex = 11;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // DX_TextBox
+            // AX_Lbl
             // 
-            this.DX_TextBox.Location = new System.Drawing.Point(69, 146);
-            this.DX_TextBox.Name = "DX_TextBox";
-            this.DX_TextBox.Size = new System.Drawing.Size(122, 23);
-            this.DX_TextBox.TabIndex = 12;
+            this.AX_Lbl.AutoSize = true;
+            this.AX_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AX_Lbl.Location = new System.Drawing.Point(150, 27);
+            this.AX_Lbl.Name = "AX_Lbl";
+            this.AX_Lbl.Size = new System.Drawing.Size(29, 21);
+            this.AX_Lbl.TabIndex = 12;
+            this.AX_Lbl.Text = "AX";
             // 
-            // AX_Label
+            // BX_Lbl
             // 
-            this.AX_Label.AutoSize = true;
-            this.AX_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AX_Label.Location = new System.Drawing.Point(34, 57);
-            this.AX_Label.Name = "AX_Label";
-            this.AX_Label.Size = new System.Drawing.Size(29, 21);
-            this.AX_Label.TabIndex = 13;
-            this.AX_Label.Text = "AX";
+            this.BX_Lbl.AutoSize = true;
+            this.BX_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BX_Lbl.Location = new System.Drawing.Point(150, 76);
+            this.BX_Lbl.Name = "BX_Lbl";
+            this.BX_Lbl.Size = new System.Drawing.Size(28, 21);
+            this.BX_Lbl.TabIndex = 13;
+            this.BX_Lbl.Text = "BX";
             // 
-            // BX_Label
+            // CX_Lbl
             // 
-            this.BX_Label.AutoSize = true;
-            this.BX_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BX_Label.Location = new System.Drawing.Point(34, 86);
-            this.BX_Label.Name = "BX_Label";
-            this.BX_Label.Size = new System.Drawing.Size(28, 21);
-            this.BX_Label.TabIndex = 14;
-            this.BX_Label.Text = "BX";
+            this.CX_Lbl.AutoSize = true;
+            this.CX_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CX_Lbl.Location = new System.Drawing.Point(150, 126);
+            this.CX_Lbl.Name = "CX_Lbl";
+            this.CX_Lbl.Size = new System.Drawing.Size(29, 21);
+            this.CX_Lbl.TabIndex = 14;
+            this.CX_Lbl.Text = "CX";
             // 
-            // CX_Label
+            // DX_Lbl
             // 
-            this.CX_Label.AutoSize = true;
-            this.CX_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CX_Label.Location = new System.Drawing.Point(34, 115);
-            this.CX_Label.Name = "CX_Label";
-            this.CX_Label.Size = new System.Drawing.Size(29, 21);
-            this.CX_Label.TabIndex = 15;
-            this.CX_Label.Text = "CX";
+            this.DX_Lbl.AutoSize = true;
+            this.DX_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DX_Lbl.Location = new System.Drawing.Point(150, 172);
+            this.DX_Lbl.Name = "DX_Lbl";
+            this.DX_Lbl.Size = new System.Drawing.Size(30, 21);
+            this.DX_Lbl.TabIndex = 15;
+            this.DX_Lbl.Text = "DX";
             // 
-            // DX_Label
+            // AH_Lbl
             // 
-            this.DX_Label.AutoSize = true;
-            this.DX_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DX_Label.Location = new System.Drawing.Point(34, 144);
-            this.DX_Label.Name = "DX_Label";
-            this.DX_Label.Size = new System.Drawing.Size(30, 21);
-            this.DX_Label.TabIndex = 16;
-            this.DX_Label.Text = "DX";
+            this.AH_Lbl.AutoSize = true;
+            this.AH_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AH_Lbl.Location = new System.Drawing.Point(357, 27);
+            this.AH_Lbl.Name = "AH_Lbl";
+            this.AH_Lbl.Size = new System.Drawing.Size(31, 21);
+            this.AH_Lbl.TabIndex = 16;
+            this.AH_Lbl.Text = "AH";
             // 
-            // AH_Label
+            // BH_Lbl
             // 
-            this.AH_Label.AutoSize = true;
-            this.AH_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AH_Label.Location = new System.Drawing.Point(255, 57);
-            this.AH_Label.Name = "AH_Label";
-            this.AH_Label.Size = new System.Drawing.Size(31, 21);
-            this.AH_Label.TabIndex = 17;
-            this.AH_Label.Text = "AH";
+            this.BH_Lbl.AutoSize = true;
+            this.BH_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BH_Lbl.Location = new System.Drawing.Point(357, 76);
+            this.BH_Lbl.Name = "BH_Lbl";
+            this.BH_Lbl.Size = new System.Drawing.Size(30, 21);
+            this.BH_Lbl.TabIndex = 17;
+            this.BH_Lbl.Text = "BH";
             // 
-            // BH_Label
+            // CH_Lbl
             // 
-            this.BH_Label.AutoSize = true;
-            this.BH_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BH_Label.Location = new System.Drawing.Point(255, 86);
-            this.BH_Label.Name = "BH_Label";
-            this.BH_Label.Size = new System.Drawing.Size(30, 21);
-            this.BH_Label.TabIndex = 18;
-            this.BH_Label.Text = "BH";
+            this.CH_Lbl.AutoSize = true;
+            this.CH_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CH_Lbl.Location = new System.Drawing.Point(357, 123);
+            this.CH_Lbl.Name = "CH_Lbl";
+            this.CH_Lbl.Size = new System.Drawing.Size(31, 21);
+            this.CH_Lbl.TabIndex = 18;
+            this.CH_Lbl.Text = "CH";
             // 
-            // CH_Label
+            // DH_Lbl
             // 
-            this.CH_Label.AutoSize = true;
-            this.CH_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CH_Label.Location = new System.Drawing.Point(255, 115);
-            this.CH_Label.Name = "CH_Label";
-            this.CH_Label.Size = new System.Drawing.Size(31, 21);
-            this.CH_Label.TabIndex = 19;
-            this.CH_Label.Text = "CH";
+            this.DH_Lbl.AutoSize = true;
+            this.DH_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DH_Lbl.Location = new System.Drawing.Point(357, 175);
+            this.DH_Lbl.Name = "DH_Lbl";
+            this.DH_Lbl.Size = new System.Drawing.Size(32, 21);
+            this.DH_Lbl.TabIndex = 19;
+            this.DH_Lbl.Text = "DH";
             // 
-            // DH_Label
+            // AL_Lbl
             // 
-            this.DH_Label.AutoSize = true;
-            this.DH_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DH_Label.Location = new System.Drawing.Point(255, 144);
-            this.DH_Label.Name = "DH_Label";
-            this.DH_Label.Size = new System.Drawing.Size(32, 21);
-            this.DH_Label.TabIndex = 20;
-            this.DH_Label.Text = "DH";
+            this.AL_Lbl.AutoSize = true;
+            this.AL_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AL_Lbl.Location = new System.Drawing.Point(539, 27);
+            this.AL_Lbl.Name = "AL_Lbl";
+            this.AL_Lbl.Size = new System.Drawing.Size(28, 21);
+            this.AL_Lbl.TabIndex = 20;
+            this.AL_Lbl.Text = "AL";
             // 
-            // AL_Label
+            // BL_Lbl
             // 
-            this.AL_Label.AutoSize = true;
-            this.AL_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AL_Label.Location = new System.Drawing.Point(398, 57);
-            this.AL_Label.Name = "AL_Label";
-            this.AL_Label.Size = new System.Drawing.Size(28, 21);
-            this.AL_Label.TabIndex = 21;
-            this.AL_Label.Text = "AL";
+            this.BL_Lbl.AutoSize = true;
+            this.BL_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BL_Lbl.Location = new System.Drawing.Point(539, 73);
+            this.BL_Lbl.Name = "BL_Lbl";
+            this.BL_Lbl.Size = new System.Drawing.Size(27, 21);
+            this.BL_Lbl.TabIndex = 21;
+            this.BL_Lbl.Text = "BL";
             // 
-            // BL_Label
+            // CL_Lbl
             // 
-            this.BL_Label.AutoSize = true;
-            this.BL_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BL_Label.Location = new System.Drawing.Point(398, 86);
-            this.BL_Label.Name = "BL_Label";
-            this.BL_Label.Size = new System.Drawing.Size(27, 21);
-            this.BL_Label.TabIndex = 22;
-            this.BL_Label.Text = "BL";
+            this.CL_Lbl.AutoSize = true;
+            this.CL_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CL_Lbl.Location = new System.Drawing.Point(539, 123);
+            this.CL_Lbl.Name = "CL_Lbl";
+            this.CL_Lbl.Size = new System.Drawing.Size(28, 21);
+            this.CL_Lbl.TabIndex = 22;
+            this.CL_Lbl.Text = "CL";
             // 
-            // CL_Label
+            // DL_Lbl
             // 
-            this.CL_Label.AutoSize = true;
-            this.CL_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CL_Label.Location = new System.Drawing.Point(398, 115);
-            this.CL_Label.Name = "CL_Label";
-            this.CL_Label.Size = new System.Drawing.Size(28, 21);
-            this.CL_Label.TabIndex = 23;
-            this.CL_Label.Text = "CL";
+            this.DL_Lbl.AutoSize = true;
+            this.DL_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DL_Lbl.Location = new System.Drawing.Point(539, 175);
+            this.DL_Lbl.Name = "DL_Lbl";
+            this.DL_Lbl.Size = new System.Drawing.Size(29, 21);
+            this.DL_Lbl.TabIndex = 23;
+            this.DL_Lbl.Text = "DL";
             // 
-            // DL_Label
+            // CLI_Textbox
             // 
-            this.DL_Label.AutoSize = true;
-            this.DL_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DL_Label.Location = new System.Drawing.Point(398, 144);
-            this.DL_Label.Name = "DL_Label";
-            this.DL_Label.Size = new System.Drawing.Size(29, 21);
-            this.DL_Label.TabIndex = 24;
-            this.DL_Label.Text = "DL";
+            this.CLI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CLI_Textbox.Location = new System.Drawing.Point(44, 253);
+            this.CLI_Textbox.Name = "CLI_Textbox";
+            this.CLI_Textbox.Size = new System.Drawing.Size(429, 29);
+            this.CLI_Textbox.TabIndex = 24;
+            this.CLI_Textbox.TextChanged += new System.EventHandler(this.CLI_Textbox_TextChanged);
             // 
-            // CLI_Label
+            // Send_Button
             // 
-            this.CLI_Label.AutoSize = true;
-            this.CLI_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CLI_Label.Location = new System.Drawing.Point(69, 201);
-            this.CLI_Label.Name = "CLI_Label";
-            this.CLI_Label.Size = new System.Drawing.Size(115, 21);
-            this.CLI_Label.TabIndex = 25;
-            this.CLI_Label.Text = "Command line:";
-            // 
-            // Commands_Label
-            // 
-            this.Commands_Label.AutoSize = true;
-            this.Commands_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Commands_Label.Location = new System.Drawing.Point(69, 280);
-            this.Commands_Label.Name = "Commands_Label";
-            this.Commands_Label.Size = new System.Drawing.Size(443, 126);
-            this.Commands_Label.TabIndex = 26;
-            this.Commands_Label.Text = resources.GetString("Commands_Label.Text");
-            // 
-            // Top_Label
-            // 
-            this.Top_Label.AutoSize = true;
-            this.Top_Label.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Top_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.Top_Label.Location = new System.Drawing.Point(197, 14);
-            this.Top_Label.Name = "Top_Label";
-            this.Top_Label.Size = new System.Drawing.Size(206, 30);
-            this.Top_Label.TabIndex = 27;
-            this.Top_Label.Text = "Intel 8086 Visualizer";
+            this.Send_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Send_Button.Location = new System.Drawing.Point(502, 242);
+            this.Send_Button.Name = "Send_Button";
+            this.Send_Button.Size = new System.Drawing.Size(81, 49);
+            this.Send_Button.TabIndex = 25;
+            this.Send_Button.Text = "Send";
+            this.Send_Button.UseVisualStyleBackColor = true;
+            this.Send_Button.Click += new System.EventHandler(this.Send_Button_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 450);
-            this.Controls.Add(this.Top_Label);
-            this.Controls.Add(this.Commands_Label);
-            this.Controls.Add(this.CLI_Label);
-            this.Controls.Add(this.DL_Label);
-            this.Controls.Add(this.CL_Label);
-            this.Controls.Add(this.BL_Label);
-            this.Controls.Add(this.AL_Label);
-            this.Controls.Add(this.DH_Label);
-            this.Controls.Add(this.CH_Label);
-            this.Controls.Add(this.BH_Label);
-            this.Controls.Add(this.AH_Label);
-            this.Controls.Add(this.DX_Label);
-            this.Controls.Add(this.CX_Label);
-            this.Controls.Add(this.BX_Label);
-            this.Controls.Add(this.AX_Label);
-            this.Controls.Add(this.DX_TextBox);
-            this.Controls.Add(this.CX_TextBox);
-            this.Controls.Add(this.BX_TextBox);
-            this.Controls.Add(this.DL_TextBox);
-            this.Controls.Add(this.DH_TextBox);
-            this.Controls.Add(this.CL_TextBox);
-            this.Controls.Add(this.CH_TextBox);
-            this.Controls.Add(this.BL_TextBox);
-            this.Controls.Add(this.AX_TextBox);
-            this.Controls.Add(this.BH_TextBox);
-            this.Controls.Add(this.AL_TextBox);
-            this.Controls.Add(this.AH_TextBox);
-            this.Controls.Add(this.CLI_TextBox);
+            this.ClientSize = new System.Drawing.Size(660, 520);
+            this.Controls.Add(this.Send_Button);
+            this.Controls.Add(this.CLI_Textbox);
+            this.Controls.Add(this.DL_Lbl);
+            this.Controls.Add(this.CL_Lbl);
+            this.Controls.Add(this.BL_Lbl);
+            this.Controls.Add(this.AL_Lbl);
+            this.Controls.Add(this.DH_Lbl);
+            this.Controls.Add(this.CH_Lbl);
+            this.Controls.Add(this.BH_Lbl);
+            this.Controls.Add(this.AH_Lbl);
+            this.Controls.Add(this.DX_Lbl);
+            this.Controls.Add(this.CX_Lbl);
+            this.Controls.Add(this.BX_Lbl);
+            this.Controls.Add(this.AX_Lbl);
+            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.DX_Textbox);
+            this.Controls.Add(this.CX_Textbox);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.BX_Textbox);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.AX_Textbox);
             this.Name = "Form1";
-            this.Text = "Intel 8086 Visualizer";
+            this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,34 +345,32 @@ namespace Intel8086
 
         #endregion
 
-        private System.Windows.Forms.TextBox CLI_TextBox;
-        private System.Windows.Forms.TextBox AH_TextBox;
-        private System.Windows.Forms.TextBox AL_TextBox;
-        private System.Windows.Forms.TextBox BH_TextBox;
-        private System.Windows.Forms.TextBox AX_TextBox;
-        private System.Windows.Forms.TextBox BL_TextBox;
-        private System.Windows.Forms.TextBox CH_TextBox;
-        private System.Windows.Forms.TextBox CL_TextBox;
-        private System.Windows.Forms.TextBox DH_TextBox;
-        private System.Windows.Forms.TextBox DL_TextBox;
-        private System.Windows.Forms.TextBox BX_TextBox;
-        private System.Windows.Forms.TextBox CX_TextBox;
-        private System.Windows.Forms.TextBox DX_TextBox;
-        private System.Windows.Forms.Label AX_Label;
-        private System.Windows.Forms.Label BX_Label;
-        private System.Windows.Forms.Label CX_Label;
-        private System.Windows.Forms.Label DX_Label;
-        private System.Windows.Forms.Label AH_Label;
-        private System.Windows.Forms.Label BH_Label;
-        private System.Windows.Forms.Label CH_Label;
-        private System.Windows.Forms.Label DH_Label;
-        private System.Windows.Forms.Label AL_Label;
-        private System.Windows.Forms.Label BL_Label;
-        private System.Windows.Forms.Label CL_Label;
-        private System.Windows.Forms.Label DL_Label;
-        private System.Windows.Forms.Label CLI_Label;
-        private System.Windows.Forms.Label Commands_Label;
-        private System.Windows.Forms.Label Top_Label;
+        private System.Windows.Forms.TextBox AX_Textbox;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox BX_Textbox;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox CX_Textbox;
+        private System.Windows.Forms.TextBox DX_Textbox;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label AX_Lbl;
+        private System.Windows.Forms.Label BX_Lbl;
+        private System.Windows.Forms.Label CX_Lbl;
+        private System.Windows.Forms.Label DX_Lbl;
+        private System.Windows.Forms.Label AH_Lbl;
+        private System.Windows.Forms.Label BH_Lbl;
+        private System.Windows.Forms.Label CH_Lbl;
+        private System.Windows.Forms.Label DH_Lbl;
+        private System.Windows.Forms.Label AL_Lbl;
+        private System.Windows.Forms.Label BL_Lbl;
+        private System.Windows.Forms.Label CL_Lbl;
+        private System.Windows.Forms.Label DL_Lbl;
+        private System.Windows.Forms.TextBox CLI_Textbox;
+        private System.Windows.Forms.Button Send_Button;
     }
 }
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mati\\Desktop\\WSEI\\2 semestr\\Architektura systemów\\Repo\\Intel8086\\Intel8086\\Intel8086.csproj": {}
+    "C:\\Users\\Mati\\OneDrive - Wyższa Szkoła Ekonomii i Informatyki w Krakowie\\Dokumenty\\GitHub\\Intel_8086_Visualizer_CS\\Intel8086\\Intel8086\\Intel8086.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mati\\Desktop\\WSEI\\2 semestr\\Architektura systemów\\Repo\\Intel8086\\Intel8086\\Intel8086.csproj": {
+    "C:\\Users\\Mati\\OneDrive - Wyższa Szkoła Ekonomii i Informatyki w Krakowie\\Dokumenty\\GitHub\\Intel_8086_Visualizer_CS\\Intel8086\\Intel8086\\Intel8086.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mati\\Desktop\\WSEI\\2 semestr\\Architektura systemów\\Repo\\Intel8086\\Intel8086\\Intel8086.csproj",
+        "projectUniqueName": "C:\\Users\\Mati\\OneDrive - Wyższa Szkoła Ekonomii i Informatyki w Krakowie\\Dokumenty\\GitHub\\Intel_8086_Visualizer_CS\\Intel8086\\Intel8086\\Intel8086.csproj",
         "projectName": "Intel8086",
-        "projectPath": "C:\\Users\\Mati\\Desktop\\WSEI\\2 semestr\\Architektura systemów\\Repo\\Intel8086\\Intel8086\\Intel8086.csproj",
+        "projectPath": "C:\\Users\\Mati\\OneDrive - Wyższa Szkoła Ekonomii i Informatyki w Krakowie\\Dokumenty\\GitHub\\Intel_8086_Visualizer_CS\\Intel8086\\Intel8086\\Intel8086.csproj",
         "packagesPath": "C:\\Users\\Mati\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mati\\Desktop\\WSEI\\2 semestr\\Architektura systemów\\Repo\\Intel8086\\Intel8086\\obj\\",
+        "outputPath": "C:\\Users\\Mati\\OneDrive - Wyższa Szkoła Ekonomii i Informatyki w Krakowie\\Dokumenty\\GitHub\\Intel_8086_Visualizer_CS\\Intel8086\\Intel8086\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mati\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -17,16 +17,41 @@ namespace Intel8086
             InitializeComponent();
         }
 
-        private void AX_TextBox_TextChanged(object sender, EventArgs e)
+        
+
+        private void Send_Button_Click(object sender, EventArgs e)
         {
-            string AX = AX_TextBox.Text;
-            string AH = AX.Substring(0, 4);
-            string AL = AX.Substring(4, 4);
+            if (CLI_Textbox.Text.Length == 0)
+            {
+                MessageBox.Show("Command is empty!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string command = CLI_Textbox.Text;
+
+                string[] commandStringArr = command.Split(' ');
+
+                string commandType = commandStringArr[0].ToLower();
+
+                if (commandType == "zero")
+                {
+                    ZeroRegisters();
+                    CLI_Textbox.Text = "";
+                }
+            }
         }
 
-        private void AH_TextBox_TextChanged(object sender, EventArgs e)
+        private void ZeroRegisters()
         {
-            AH_TextBox.Text = AH;
+            AX_Textbox.Text = "0000";
+            BX_Textbox.Text = "0000";
+            CX_Textbox.Text = "0000";
+            DX_Textbox.Text = "0000";
+        }
+
+        private void CLI_Textbox_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

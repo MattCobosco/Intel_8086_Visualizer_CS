@@ -57,12 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Commands_Label.Text" xml:space="preserve">
-    <value>Available commands:
-
-MOV {1}, {2} - moves value from 1st position to 2nd
-XCHG {1}, {2} - exchanges values between 1st position and 2nd
-ZERO - fills the entire register with zeros
-RANDOM - fill the entire register with random values</value>
-  </data>
 </root>
