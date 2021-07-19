@@ -55,6 +55,7 @@ namespace Intel8086
             this.CL_Textbox = new System.Windows.Forms.TextBox();
             this.BL_Textbox = new System.Windows.Forms.TextBox();
             this.AL_Textbox = new System.Windows.Forms.TextBox();
+            this.CLI_History_ListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // AX_Textbox
@@ -340,11 +341,22 @@ namespace Intel8086
             this.AL_Textbox.TabIndex = 30;
             this.AL_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // CLI_History_ListBox
+            // 
+            this.CLI_History_ListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CLI_History_ListBox.FormattingEnabled = true;
+            this.CLI_History_ListBox.ItemHeight = 21;
+            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 300);
+            this.CLI_History_ListBox.Name = "CLI_History_ListBox";
+            this.CLI_History_ListBox.Size = new System.Drawing.Size(276, 193);
+            this.CLI_History_ListBox.TabIndex = 34;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 520);
+            this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
             this.Controls.Add(this.CL_Textbox);
             this.Controls.Add(this.BL_Textbox);
@@ -406,6 +418,7 @@ namespace Intel8086
         private System.Windows.Forms.TextBox CL_Textbox;
         private System.Windows.Forms.TextBox BL_Textbox;
         private System.Windows.Forms.TextBox AL_Textbox;
+        private System.Windows.Forms.ListBox CLI_History_ListBox;
     }
 }
 
