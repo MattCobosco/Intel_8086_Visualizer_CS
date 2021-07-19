@@ -28,12 +28,28 @@ namespace Intel8086
 
                 if (commandType == "zero")
                 {
-                    ZeroRegisters();
-                    CLI_Textbox.Text = "";
+                    if (commandStringArr.Length > 1)
+                    {
+                        MessageBox.Show("Command has too many elements. Try \"zero\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        ZeroRegisters();
+                        CLI_Textbox.Text = "";
+                    }
+
                 }
                 else if (commandType == "random")
                 {
-                    RandomRegisters();
+                    if (commandStringArr.Length > 1)
+                    {
+                        MessageBox.Show("Command has too many elements. Try \"random\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        RandomRegisters();
+                        CLI_Textbox.Text = "";
+                    }
                 }
             }
         }
@@ -42,14 +58,14 @@ namespace Intel8086
         {
             // input random 4-digit hex values into X registers;
             Random random = new Random();
-            int numAX = random.Next(0, 65535);
-            int numBX = random.Next(0, 65535);
-            int numCX = random.Next(0, 65535);
-            int numDX = random.Next(0, 65535);
-            string hexStringAX = numAX.ToString("X");
-            string hexStringBX = numBX.ToString("X");
-            string hexStringCX = numCX.ToString("X");
-            string hexStringDX = numDX.ToString("X");
+            int numAX = random.Next(0, 65536);
+            int numBX = random.Next(0, 65536);
+            int numCX = random.Next(0, 65536);
+            int numDX = random.Next(0, 65536);
+            string hexStringAX = numAX.ToString("X4");
+            string hexStringBX = numBX.ToString("X4");
+            string hexStringCX = numCX.ToString("X4");
+            string hexStringDX = numDX.ToString("X4");
 
             AX_Textbox.Text = hexStringAX;
             BX_Textbox.Text = hexStringBX;
@@ -80,9 +96,12 @@ namespace Intel8086
             DL_Textbox.Text = DX_Textbox.Text.Substring(2, 2);
         }
 
-        private void EqualizeHL_X() // join all H and L registers into X registers to keep them up to date. Used  after any H or L register is modified
+        private void EqualizeHL_X() // join all H and L registers into X registers to keep them up to date. Used after any H or L register is modified
         {
-            throw new NotImplementedException();
+            AX_Textbox.Text = AH_Textbox.Text + AL_Textbox.Text;
+            BX_Textbox.Text = BH_Textbox.Text + BL_Textbox.Text;
+            CX_Textbox.Text = CH_Textbox.Text + CL_Textbox.Text;
+            DX_Textbox.Text = DH_Textbox.Text + DL_Textbox.Text;
         }
     }
 }

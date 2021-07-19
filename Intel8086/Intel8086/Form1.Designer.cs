@@ -232,7 +232,6 @@ namespace Intel8086
             this.CLI_Textbox.Name = "CLI_Textbox";
             this.CLI_Textbox.Size = new System.Drawing.Size(429, 29);
             this.CLI_Textbox.TabIndex = 24;
-            this.CLI_Textbox.TextChanged += new System.EventHandler(this.CLI_Textbox_TextChanged);
             // 
             // Enter_Button
             // 
@@ -374,7 +373,6 @@ namespace Intel8086
             this.Controls.Add(this.AX_Textbox);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
