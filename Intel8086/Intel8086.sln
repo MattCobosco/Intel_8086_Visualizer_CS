@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intel8086", "Intel8086\Intel8086.csproj", "{8634592C-5D5D-4BF0-BAB8-BE5834A7B68F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intel8086", "Intel8086\Intel8086.csproj", "{D2A19E7F-46B3-4E8A-BCFC-EBB77769CEB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8634592C-5D5D-4BF0-BAB8-BE5834A7B68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8634592C-5D5D-4BF0-BAB8-BE5834A7B68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8634592C-5D5D-4BF0-BAB8-BE5834A7B68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8634592C-5D5D-4BF0-BAB8-BE5834A7B68F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A19E7F-46B3-4E8A-BCFC-EBB77769CEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A19E7F-46B3-4E8A-BCFC-EBB77769CEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A19E7F-46B3-4E8A-BCFC-EBB77769CEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A19E7F-46B3-4E8A-BCFC-EBB77769CEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E6342559-3468-472D-8C14-B4B7DF4DC94A}
+		SolutionGuid = {16383BFB-0C21-4CFF-A31D-77E71A57496C}
 	EndGlobalSection
 EndGlobal
