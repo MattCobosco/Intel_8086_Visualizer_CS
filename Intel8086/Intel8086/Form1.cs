@@ -115,7 +115,7 @@ namespace Intel8086
                 };
 
 
-                if (XRegList.Contains(regOne) && XRegList.Contains(regTwo)) // if both registers given in the mov command belong to the X register (8bit) indes list then it's possible to move the value
+                if (XRegList.Contains(regOne) && XRegList.Contains(regTwo)) // if both registers given in the mov command belong to the X register (16bit) index list then it's possible to move the value
                 {
                     if (regOne == "ax" && regTwo == "bx") // HACK: Find a less retarded way to move values in registers - perhaps lists with elements displayed in textboxes?
                     {
@@ -168,7 +168,7 @@ namespace Intel8086
 
                     EqualizeX_HL();
                 }
-                else if (HLRegList.Contains(regOne) && HLRegList.Contains(regTwo)) // if both registers belong to H/L register (4bit) list then it's possible to move their value
+                else if (HLRegList.Contains(regOne) && HLRegList.Contains(regTwo)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
                 {
                     if (regOne == "al" && regTwo == "bl") // HACK: Find a less retarded way to move values in registers - perhaps lists with elements displayed in textboxes?
                     {
@@ -400,22 +400,98 @@ namespace Intel8086
                         DH_Textbox.Text = BH_Textbox.Text;
                     }
                     else if (regOne == "dh" && regTwo == "ch")
-                    {
-                        DH_Textbox.Text = CH_Textbox.Text;
-                    }
-
+                
                     EqualizeHL_X();
                 }
                 else // it's impossible to move values in all other instances where the user provides two register indexes => the error popup message box will be displayed to the user
                 {
                     MessageBox.Show("Wrong command. \nCannot move the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
         }
 
         private void MovCommand(string regOne, int regTwo) /* TODO: create option to add values to the register with mov */
         {
-            throw new NotImplementedException();
+            List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
+                {
+                    "ax", "bx", "cx", "dx"
+                };
+
+            List<string> HLRegList = new List<string>()
+                {
+                    "ah", "bh", "ch", "dh", "al", "bl", "cl", "dl"
+                };
+
+            if (XRegList.Contains(regOne) || HLRegList.Contains(regOne))
+            {
+                if (XRegList.Contains(regOne))
+                {
+                    string Hex4 = regTwo.ToString("X4");
+
+                    if (regOne == "ax")
+                    {
+                        AX_Textbox.Text = Hex4;
+                    }
+                    else if (regOne == "bx")
+                    {
+                        BX_Textbox.Text = Hex4;
+                    }
+                    else if (regOne == "cx")
+                    {
+                        BX_Textbox.Text = Hex4;
+                    }
+                    else if (regOne == "dx")
+                    {
+                        BX_Textbox.Text = Hex4;
+                    }
+
+                    EqualizeX_HL();
+                }
+                else if (HLRegList.Contains(regOne))
+                {
+                    string Hex2 = regTwo.ToString("X2");
+
+                    if (regOne == "al")
+                    {
+                        AL_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "bl")
+                    {
+                        BL_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "cl")
+                    {
+                        CL_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "dl")
+                    {
+                        DL_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "ah")
+                    {
+                        AH_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "bh")
+                    {
+                        BH_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "ch")
+                    {
+                        CH_Textbox.Text = Hex2;
+                    }
+                    else if (regOne == "dh")
+                    {
+                        DH_Textbox.Text = Hex2;
+                    }
+
+                    EqualizeHL_X();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Wrong command. \nWrong register index", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void RandomRegisters()
