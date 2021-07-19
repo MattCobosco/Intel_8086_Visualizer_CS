@@ -42,7 +42,7 @@ namespace Intel8086
         {
             // input random 4-digit hex values into X registers;
             Random random = new Random();
-            int numAX = random.Next(0,65535);
+            int numAX = random.Next(0, 65535);
             int numBX = random.Next(0, 65535);
             int numCX = random.Next(0, 65535);
             int numDX = random.Next(0, 65535);
@@ -83,16 +83,6 @@ namespace Intel8086
         private void EqualizeHL_X() // join all H and L registers into X registers to keep them up to date. Used  after any H or L register is modified
         {
             throw new NotImplementedException();
-        }
-
-        private void CLI_Textbox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
