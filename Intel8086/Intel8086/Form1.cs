@@ -37,7 +37,6 @@ namespace Intel8086
                     else // else zero the registers
                     {
                         ZeroRegisters();
-                        CLI_Textbox.Text = "";
                     }
 
                 }
@@ -50,7 +49,6 @@ namespace Intel8086
                     else // else fill the registers with random 4-digit hex numbers
                     {
                         RandomRegisters();
-                        CLI_Textbox.Text = "";
                     }
                 }
                 else if (commandType == "mov")
@@ -68,7 +66,6 @@ namespace Intel8086
                         MovCommand(commandAux1, commandAux2);
                     }
 
-                    CLI_Textbox.Text = "";
                 }
                 else if (commandType == "xchg") /* TODO: Exchg command */
                 {
@@ -78,9 +75,13 @@ namespace Intel8086
                 {
                     MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                CLI_Textbox.Text = ""; // clears the command line after the command execution
+
+                CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
             }
 
-            CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
+            
         }
 
         private void MovCommand(string regOne, string regTwo)
