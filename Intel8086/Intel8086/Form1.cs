@@ -14,21 +14,21 @@ namespace Intel8086
 
         private void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
         {
-            if (CLI_Textbox.Text.Length == 0) // 
+            if (CLI_Textbox.Text.Length == 0) // if there's no command, show warning popup
             {
                 MessageBox.Show("Command is empty!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                string command = CLI_Textbox.Text;
+                string command = CLI_Textbox.Text; // get the command as string
 
-                string[] commandStringArr = command.Split(' ');
+                string[] commandStringArr = command.Split(' '); // split it into string array
 
-                string commandType = commandStringArr[0].ToLower();
+                string commandType = commandStringArr[0].ToLower(); // get the first word from the command. It will determine what action needs to be taken
 
                 if (commandType == "zero")
                 {
-                    if (commandStringArr.Length > 1)
+                    if (commandStringArr.Length > 1) // if zero command has too many elements, show warning popup asking to use the correct command
                     {
                         MessageBox.Show("Command has too many elements. Try \"zero\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -41,7 +41,7 @@ namespace Intel8086
                 }
                 else if (commandType == "random")
                 {
-                    if (commandStringArr.Length > 1)
+                    if (commandStringArr.Length > 1) // if random command has too many elements, show warning popup asking to use the correct command
                     {
                         MessageBox.Show("Command has too many elements. Try \"random\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -56,7 +56,7 @@ namespace Intel8086
 
         private void RandomRegisters()
         {
-            // input random 4-digit hex values into X registers;
+            // input random 4-digit hex values into all X registers;
             Random random = new Random();
             int numAX = random.Next(0, 65536);
             int numBX = random.Next(0, 65536);
