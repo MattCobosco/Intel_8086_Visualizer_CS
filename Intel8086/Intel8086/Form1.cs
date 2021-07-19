@@ -24,6 +24,8 @@ namespace Intel8086
 
                 CLI_History_ListBox.Items.Add(CLI_Textbox.Text); // command is saved to the history list box
 
+                ReverseListBoxOrder(); // most recent command is always on top
+
                 string[] commandStringArr = command.Split(' '); // split it into string array
 
                 string commandType = commandStringArr[0].ToLower(); // get the first word from the command. It will determine what action needs to be taken
@@ -81,12 +83,22 @@ namespace Intel8086
                 CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
             }
 
-            
+
+        }
+
+        private void ReverseListBoxOrder() // reverses the order of items in the history to show the most recent command on top
+        {
+            for (int i = 0; i < CLI_History_ListBox.Items.Count / 2; i++)
+            {
+                var tmp = CLI_History_ListBox.Items[i];
+                CLI_History_ListBox.Items[i] = CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1];
+                CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1] = tmp;
+            }
         }
 
         private void MovCommand(string regOne, string regTwo)
         {
-            if (regOne == regTwo)
+            if (regOne == regTwo) // if user tries to move values between the same index, an error message box appears
             {
                 MessageBox.Show("Wrong command. \nCannot move the value between the same registers.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -398,7 +410,6 @@ namespace Intel8086
                 {
                     MessageBox.Show("Wrong command. \nCannot move the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
         }
 

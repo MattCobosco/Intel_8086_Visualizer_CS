@@ -229,7 +229,7 @@ namespace Intel8086
             // CLI_Textbox
             // 
             this.CLI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CLI_Textbox.Location = new System.Drawing.Point(44, 253);
+            this.CLI_Textbox.Location = new System.Drawing.Point(44, 242);
             this.CLI_Textbox.Name = "CLI_Textbox";
             this.CLI_Textbox.Size = new System.Drawing.Size(429, 29);
             this.CLI_Textbox.TabIndex = 24;
@@ -237,7 +237,7 @@ namespace Intel8086
             // Enter_Button
             // 
             this.Enter_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Enter_Button.Location = new System.Drawing.Point(502, 242);
+            this.Enter_Button.Location = new System.Drawing.Point(502, 231);
             this.Enter_Button.Name = "Enter_Button";
             this.Enter_Button.Size = new System.Drawing.Size(81, 49);
             this.Enter_Button.TabIndex = 25;
@@ -346,16 +346,16 @@ namespace Intel8086
             this.CLI_History_ListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CLI_History_ListBox.FormattingEnabled = true;
             this.CLI_History_ListBox.ItemHeight = 21;
-            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 300);
+            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 312);
             this.CLI_History_ListBox.Name = "CLI_History_ListBox";
-            this.CLI_History_ListBox.Size = new System.Drawing.Size(276, 193);
+            this.CLI_History_ListBox.Size = new System.Drawing.Size(276, 151);
             this.CLI_History_ListBox.TabIndex = 34;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 520);
+            this.ClientSize = new System.Drawing.Size(660, 496);
             this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
             this.Controls.Add(this.CL_Textbox);
