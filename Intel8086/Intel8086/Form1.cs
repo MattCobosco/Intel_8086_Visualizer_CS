@@ -16,7 +16,7 @@ namespace Intel8086
         {
             if (CLI_Textbox.Text.Length == 0) // if there's no command, show warning popup
             {
-                MessageBox.Show("Command is empty!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Command is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -30,7 +30,7 @@ namespace Intel8086
                 {
                     if (commandStringArr.Length > 1) // if zero command has too many elements, show warning popup asking to use the correct command
                     {
-                        MessageBox.Show("Command has too many elements. Try \"zero\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Command has too many elements. \nTry \"zero\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -43,13 +43,17 @@ namespace Intel8086
                 {
                     if (commandStringArr.Length > 1) // if random command has too many elements, show warning popup asking to use the correct command
                     {
-                        MessageBox.Show("Command has too many elements. Try \"random\"!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Command has too many elements. \nTry \"random\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
                         RandomRegisters();
                         CLI_Textbox.Text = "";
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
