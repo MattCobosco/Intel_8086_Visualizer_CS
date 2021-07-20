@@ -80,7 +80,7 @@ namespace Intel8086
                     MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                CLI_Textbox.Text = ""; // clears the command line after the command execution
+                CLI_Textbox.Text = ""; // clears the command line after the command is entered
 
                 CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
             }
