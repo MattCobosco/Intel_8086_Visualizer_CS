@@ -29,6 +29,7 @@ namespace Intel8086
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.AX_Textbox = new System.Windows.Forms.TextBox();
             this.BX_Textbox = new System.Windows.Forms.TextBox();
             this.CX_Textbox = new System.Windows.Forms.TextBox();
@@ -56,6 +57,7 @@ namespace Intel8086
             this.BL_Textbox = new System.Windows.Forms.TextBox();
             this.AL_Textbox = new System.Windows.Forms.TextBox();
             this.CLI_History_ListBox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AX_Textbox
@@ -231,15 +233,15 @@ namespace Intel8086
             this.CLI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CLI_Textbox.Location = new System.Drawing.Point(44, 242);
             this.CLI_Textbox.Name = "CLI_Textbox";
-            this.CLI_Textbox.Size = new System.Drawing.Size(429, 29);
+            this.CLI_Textbox.Size = new System.Drawing.Size(464, 29);
             this.CLI_Textbox.TabIndex = 24;
             // 
             // Enter_Button
             // 
             this.Enter_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Enter_Button.Location = new System.Drawing.Point(502, 231);
+            this.Enter_Button.Location = new System.Drawing.Point(539, 231);
             this.Enter_Button.Name = "Enter_Button";
-            this.Enter_Button.Size = new System.Drawing.Size(81, 49);
+            this.Enter_Button.Size = new System.Drawing.Size(98, 49);
             this.Enter_Button.TabIndex = 25;
             this.Enter_Button.Text = "Enter";
             this.Enter_Button.UseVisualStyleBackColor = true;
@@ -348,14 +350,25 @@ namespace Intel8086
             this.CLI_History_ListBox.ItemHeight = 21;
             this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 312);
             this.CLI_History_ListBox.Name = "CLI_History_ListBox";
-            this.CLI_History_ListBox.Size = new System.Drawing.Size(276, 151);
+            this.CLI_History_ListBox.Size = new System.Drawing.Size(203, 151);
             this.CLI_History_ListBox.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(288, 312);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(502, 133);
+            this.label1.TabIndex = 35;
+            this.label1.Text = resources.GetString("label1.Text");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 496);
+            this.ClientSize = new System.Drawing.Size(821, 496);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
             this.Controls.Add(this.CL_Textbox);
@@ -419,6 +432,7 @@ namespace Intel8086
         private System.Windows.Forms.TextBox BL_Textbox;
         private System.Windows.Forms.TextBox AL_Textbox;
         private System.Windows.Forms.ListBox CLI_History_ListBox;
+        private System.Windows.Forms.Label label1;
     }
 }
 
