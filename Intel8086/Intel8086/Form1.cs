@@ -14,78 +14,83 @@ namespace Intel8086
 
         private void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
         {
-            if (CLI_Textbox.Text.Length == 0) // if there's no command, show warning popup message box
+            try
             {
-                MessageBox.Show("Command is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (CLI_Textbox.Text.Length == 0) // if there's no command, show warning popup message box
+                {
+                    MessageBox.Show("Command is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    string command = CLI_Textbox.Text; // get the command as string
+
+                    CLI_History_ListBox.Items.Add(CLI_Textbox.Text); // command is saved to the history list box
+
+                    ReverseListBoxOrder(); // most recent command is always on top
+
+                    string[] commandStringArr = command.Split(' '); // split it into string array
+
+                    string commandType = commandStringArr[0].ToLower(); // get the first word from the command. It will determine what action needs to be taken
+
+                    if (commandType == "zero")
+                    {
+                        if (commandStringArr.Length > 1) // if zero command has too many elements, show warning popup asking to use the correct command
+                        {
+                            MessageBox.Show("Command has too many elements. \nTry \"zero\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else // else zero the registers
+                        {
+                            ZeroRegisters();
+                            CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                        }
+
+                    }
+                    else if (commandType == "random")
+                    {
+                        if (commandStringArr.Length > 1) // if random command has too many elements, show warning popup asking to use the correct command
+                        {
+                            MessageBox.Show("Command has too many elements. \nTry \"random\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else // else fill the registers with random 4-digit hex numbers
+                        {
+                            RandomRegisters();
+                            CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                        }
+                    }
+                    else if (commandType == "mov")
+                    {
+                        string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
+                        string commandAux2 = commandStringArr[2].ToLower();
+                        bool commandIsNum = int.TryParse(commandAux2, out int commandAux2Num); // determine whether the user wants to move value from one register to another or whether they want to move number to a register
+
+                        if (commandIsNum) // if the user wants to move a number then use the method MovCommand which accepts a string and an int as parameters
+                        {
+
+                            MovCommand(commandAux1, commandAux2Num);
+                        }
+                        else // if the user wants to move a value from one register to another then use the method MovCommand which accepts two strings as parameters
+                        {
+                            MovCommand(commandAux1, commandAux2);
+                        }
+                    }
+                    else if (commandType == "xchg")
+                    {
+                        string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
+                        string commandAux2 = commandStringArr[2].ToLower();
+                        XchgCommand(commandAux1, commandAux2);
+                    }
+                    else // any different command returns a popup error message box
+                    {
+                        MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
+                }
             }
-            else
+            catch (IndexOutOfRangeException)
             {
-                string command = CLI_Textbox.Text; // get the command as string
-
-                CLI_History_ListBox.Items.Add(CLI_Textbox.Text); // command is saved to the history list box
-
-                ReverseListBoxOrder(); // most recent command is always on top
-
-                string[] commandStringArr = command.Split(' '); // split it into string array
-
-                string commandType = commandStringArr[0].ToLower(); // get the first word from the command. It will determine what action needs to be taken
-
-                if (commandType == "zero")
-                {
-                    if (commandStringArr.Length > 1) // if zero command has too many elements, show warning popup asking to use the correct command
-                    {
-                        MessageBox.Show("Command has too many elements. \nTry \"zero\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else // else zero the registers
-                    {
-                        ZeroRegisters();
-                    }
-
-                }
-                else if (commandType == "random")
-                {
-                    if (commandStringArr.Length > 1) // if random command has too many elements, show warning popup asking to use the correct command
-                    {
-                        MessageBox.Show("Command has too many elements. \nTry \"random\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else // else fill the registers with random 4-digit hex numbers
-                    {
-                        RandomRegisters();
-                    }
-                }
-                else if (commandType == "mov")
-                {
-                    string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
-                    string commandAux2 = commandStringArr[2].ToLower();
-                    bool commandIsNum = int.TryParse(commandAux2, out int commandAux2Num); // determine whether the user wants to move value from one register to another or whether they want to move number to a register
-
-                    if (commandIsNum) // if the user wants to move a number then use the method MovCommand which accepts a string and an int as parameters
-                    {
-                        MovCommand(commandAux1, commandAux2Num);
-                    }
-                    else // if the user wants to move a value from one register to another then use the method MovCommand which accepts two strings as parameters
-                    {
-                        MovCommand(commandAux1, commandAux2);
-                    }
-
-                }
-                else if (commandType == "xchg")
-                {
-                    string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
-                    string commandAux2 = commandStringArr[2].ToLower();
-                    XchgCommand(commandAux1, commandAux2);
-                }
-                else // any different command returns a popup error message box
-                {
-                    MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                CLI_Textbox.Text = ""; // clears the command line after the command is entered
-
-                CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
+                MessageBox.Show("Wrong command. \nPlease check the command before trying again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
         private void XchgCommand(string commandAux1, string commandAux2)
@@ -183,6 +188,7 @@ namespace Intel8086
                         CX_Textbox.Text = temp;
                     }
 
+                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
                     EqualizeX_HL(); // update the H and L registers with the corresponding values X register
                 }
                 else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
@@ -358,6 +364,7 @@ namespace Intel8086
                         DH_Textbox.Text = temp;
                     }
 
+                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
                     EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
                 }
                 else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
@@ -451,6 +458,7 @@ namespace Intel8086
                         DX_Textbox.Text = CX_Textbox.Text;
                     }
 
+                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
                     EqualizeX_HL(); // update the H and L registers with the corresponding values X register
                 }
                 else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
@@ -483,7 +491,6 @@ namespace Intel8086
                     {
                         AL_Textbox.Text = DH_Textbox.Text;
                     }
-
                     else if (commandAux1 == "bl" && commandAux2 == "al")
                     {
                         BL_Textbox.Text = AL_Textbox.Text;
@@ -512,8 +519,6 @@ namespace Intel8086
                     {
                         BL_Textbox.Text = DH_Textbox.Text;
                     }
-
-
                     else if (commandAux1 == "cl" && commandAux2 == "al")
                     {
                         CL_Textbox.Text = AL_Textbox.Text;
@@ -542,7 +547,6 @@ namespace Intel8086
                     {
                         CL_Textbox.Text = DH_Textbox.Text;
                     }
-
                     else if (commandAux1 == "dl" && commandAux2 == "al")
                     {
                         DL_Textbox.Text = AL_Textbox.Text;
@@ -571,8 +575,6 @@ namespace Intel8086
                     {
                         DL_Textbox.Text = DH_Textbox.Text;
                     }
-
-
                     else if (commandAux1 == "ah" && commandAux2 == "al")
                     {
                         AH_Textbox.Text = AL_Textbox.Text;
@@ -601,7 +603,6 @@ namespace Intel8086
                     {
                         AH_Textbox.Text = DH_Textbox.Text;
                     }
-
                     else if (commandAux1 == "bh" && commandAux2 == "al")
                     {
                         BH_Textbox.Text = AL_Textbox.Text;
@@ -630,7 +631,6 @@ namespace Intel8086
                     {
                         BH_Textbox.Text = DH_Textbox.Text;
                     }
-
                     else if (commandAux1 == "ch" && commandAux2 == "al")
                     {
                         CH_Textbox.Text = AL_Textbox.Text;
@@ -659,7 +659,6 @@ namespace Intel8086
                     {
                         CH_Textbox.Text = DH_Textbox.Text;
                     }
-
                     else if (commandAux1 == "dh" && commandAux2 == "al")
                     {
                         DH_Textbox.Text = AL_Textbox.Text;
@@ -689,6 +688,7 @@ namespace Intel8086
                         DH_Textbox.Text = CH_Textbox.Text;
                     }
 
+                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
                     EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
                 }
                 else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
@@ -744,7 +744,7 @@ namespace Intel8086
                         }
 
                         EqualizeX_HL();
-                    }    
+                    }
                 }
                 else // if it's not the X register then it must be the H/L register
                 {
