@@ -69,7 +69,7 @@ namespace Intel8086
                     }
 
                 }
-                else if (commandType == "xchg") /* TODO: Exchg command */
+                else if (commandType == "xchg")
                 {
                     string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
                     string commandAux2 = commandStringArr[2].ToLower();
@@ -718,65 +718,79 @@ namespace Intel8086
             {
                 if (XRegList.Contains(commandAux1)) // check if it's for the X register
                 {
-                    string Hex4 = commandAux2.ToString("X4"); // convert the into into a 4-digit hex
+                    if (commandAux2 > 65535) // if the int is too big, warn the user
+                    {
+                        MessageBox.Show("Wrong command. \nIndex overflow. \nTry int smaller or equal to 65,535.");
+                    }
+                    else
+                    {
+                        string Hex4 = commandAux2.ToString("X4"); // convert the into into a 4-digit hex
 
-                    if (commandAux1 == "ax") // change the requested register
-                    {
-                        AX_Textbox.Text = Hex4;
-                    }
-                    else if (commandAux1 == "bx")
-                    {
-                        BX_Textbox.Text = Hex4;
-                    }
-                    else if (commandAux1 == "cx")
-                    {
-                        BX_Textbox.Text = Hex4;
-                    }
-                    else if (commandAux1 == "dx")
-                    {
-                        BX_Textbox.Text = Hex4;
-                    }
+                        if (commandAux1 == "ax") // change the requested register
+                        {
+                            AX_Textbox.Text = Hex4;
+                        }
+                        else if (commandAux1 == "bx")
+                        {
+                            BX_Textbox.Text = Hex4;
+                        }
+                        else if (commandAux1 == "cx")
+                        {
+                            BX_Textbox.Text = Hex4;
+                        }
+                        else if (commandAux1 == "dx")
+                        {
+                            BX_Textbox.Text = Hex4;
+                        }
 
-                    EqualizeX_HL();
+                        EqualizeX_HL();
+                    }    
                 }
                 else // if it's not the X register then it must be the H/L register
                 {
-                    string Hex2 = commandAux2.ToString("X2"); // generate a 2-digit hex 
+                    if (commandAux2 > 255) // if the int is too big, warn the user
+                    {
+                        MessageBox.Show("Wrong command. \nIndex overflow. \nTry int smaller or equal to 255.");
+                    }
+                    else
+                    {
+                        string Hex2 = commandAux2.ToString("X2"); // generate a 2-digit hex 
 
-                    if (commandAux1 == "al") // and put it in the requested register
-                    {
-                        AL_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "bl")
-                    {
-                        BL_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "cl")
-                    {
-                        CL_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "dl")
-                    {
-                        DL_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "ah")
-                    {
-                        AH_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "bh")
-                    {
-                        BH_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "ch")
-                    {
-                        CH_Textbox.Text = Hex2;
-                    }
-                    else if (commandAux1 == "dh")
-                    {
-                        DH_Textbox.Text = Hex2;
+                        if (commandAux1 == "al") // and put it in the requested register
+                        {
+                            AL_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "bl")
+                        {
+                            BL_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "cl")
+                        {
+                            CL_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "dl")
+                        {
+                            DL_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "ah")
+                        {
+                            AH_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "bh")
+                        {
+                            BH_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "ch")
+                        {
+                            CH_Textbox.Text = Hex2;
+                        }
+                        else if (commandAux1 == "dh")
+                        {
+                            DH_Textbox.Text = Hex2;
+                        }
                     }
 
-                    EqualizeHL_X(); //
+                    EqualizeHL_X();
                 }
             }
             else
