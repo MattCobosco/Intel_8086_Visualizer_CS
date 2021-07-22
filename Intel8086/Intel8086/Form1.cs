@@ -124,9 +124,9 @@ namespace Intel8086
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue > 1)
+            if (intValue > 65535)
             {
-                intValue -= 2;
+                intValue += 2;
                 string hexValue = intValue.ToString("X4");
                 SP_Textbox.Text = hexValue;
             }
@@ -140,9 +140,9 @@ namespace Intel8086
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue < 65535)
+            if (intValue < 2)
             {
-                intValue += 2;
+                intValue -= 2;
                 string hexValue = intValue.ToString("X4");
                 SP_Textbox.Text = hexValue;
             }
@@ -849,7 +849,7 @@ namespace Intel8086
 
         private void RandomRegisters()
         {
-            // input random 4-digit hex values into all X registers;
+            // input random 4-digit hex values into all X registers and Stack Pointer;
             Random random = new Random();
             int numAX = random.Next(0, 65536);
             int numBX = random.Next(0, 65536);
@@ -876,7 +876,7 @@ namespace Intel8086
             BX_Textbox.Text = "0000";
             CX_Textbox.Text = "0000";
             DX_Textbox.Text = "0000";
-            SP_Textbox.Text = "0000";
+            SP_Textbox.Text = 65534.ToString("X4");
             EqualizeX_HL();
         }
 
