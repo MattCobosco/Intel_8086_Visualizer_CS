@@ -95,287 +95,282 @@ namespace Intel8086
 
         private void XchgCommand(string commandAux1, string commandAux2)
         {
-            if (commandAux1 == commandAux2) // warns that users is trying to exchange values between one register
-            {
-                MessageBox.Show("Wrong command. \nCannot exhange values between the same register.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
+
+            List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
                 {
                     "ax", "bx", "cx", "dx"
                 };
 
-                List<string> HLRegList = new List<string>()
+            List<string> HLRegList = new List<string>()
                 {
                     "ah", "bh", "ch", "dh", "al", "bl", "cl", "dl"
                 };
 
 
-                if (XRegList.Contains(commandAux1) && XRegList.Contains(commandAux2)) // if both registers given in the xchg command belong to the X register (16bit) index list then it's possible to exchange their values
+            if (XRegList.Contains(commandAux1) && XRegList.Contains(commandAux2)) // if both registers given in the xchg command belong to the X register (16bit) index list then it's possible to exchange their values
+            {
+                string temp;
+                if (commandAux1 == "ax" && commandAux2 == "bx")
                 {
-                    string temp;
-                    if (commandAux1 == "ax" && commandAux2 == "bx")
-                    {
-                        temp = AX_Textbox.Text;
-                        AX_Textbox.Text = BX_Textbox.Text;
-                        BX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "ax" && commandAux2 == "cx")
-                    {
-                        temp = AX_Textbox.Text;
-                        AX_Textbox.Text = CX_Textbox.Text;
-                        CX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "ax" && commandAux2 == "dx")
-                    {
-                        temp = AX_Textbox.Text;
-                        AX_Textbox.Text = DX_Textbox.Text;
-                        DX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "ax")
-                    {
-                        temp = BX_Textbox.Text;
-                        BX_Textbox.Text = AX_Textbox.Text;
-                        AX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "cx")
-                    {
-                        temp = BX_Textbox.Text;
-                        BX_Textbox.Text = CX_Textbox.Text;
-                        CX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "dx")
-                    {
-                        temp = BX_Textbox.Text;
-                        BX_Textbox.Text = DX_Textbox.Text;
-                        DX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "ax")
-                    {
-                        temp = CX_Textbox.Text;
-                        CX_Textbox.Text = AX_Textbox.Text;
-                        AX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "bx")
-                    {
-                        temp = CX_Textbox.Text;
-                        CX_Textbox.Text = BX_Textbox.Text;
-                        BX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "dx")
-                    {
-                        temp = CX_Textbox.Text;
-                        CX_Textbox.Text = DX_Textbox.Text;
-                        DX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "ax")
-                    {
-                        temp = DX_Textbox.Text;
-                        DX_Textbox.Text = AX_Textbox.Text;
-                        AX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "bx")
-                    {
-                        temp = DX_Textbox.Text;
-                        DX_Textbox.Text = BX_Textbox.Text;
-                        BX_Textbox.Text = temp;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "cx")
-                    {
-                        temp = DX_Textbox.Text;
-                        DX_Textbox.Text = CX_Textbox.Text;
-                        CX_Textbox.Text = temp;
-                    }
+                    temp = AX_Textbox.Text;
+                    AX_Textbox.Text = BX_Textbox.Text;
+                    BX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "ax" && commandAux2 == "cx")
+                {
+                    temp = AX_Textbox.Text;
+                    AX_Textbox.Text = CX_Textbox.Text;
+                    CX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "ax" && commandAux2 == "dx")
+                {
+                    temp = AX_Textbox.Text;
+                    AX_Textbox.Text = DX_Textbox.Text;
+                    DX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "ax")
+                {
+                    temp = BX_Textbox.Text;
+                    BX_Textbox.Text = AX_Textbox.Text;
+                    AX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "cx")
+                {
+                    temp = BX_Textbox.Text;
+                    BX_Textbox.Text = CX_Textbox.Text;
+                    CX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "dx")
+                {
+                    temp = BX_Textbox.Text;
+                    BX_Textbox.Text = DX_Textbox.Text;
+                    DX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "ax")
+                {
+                    temp = CX_Textbox.Text;
+                    CX_Textbox.Text = AX_Textbox.Text;
+                    AX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "bx")
+                {
+                    temp = CX_Textbox.Text;
+                    CX_Textbox.Text = BX_Textbox.Text;
+                    BX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "dx")
+                {
+                    temp = CX_Textbox.Text;
+                    CX_Textbox.Text = DX_Textbox.Text;
+                    DX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "ax")
+                {
+                    temp = DX_Textbox.Text;
+                    DX_Textbox.Text = AX_Textbox.Text;
+                    AX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "bx")
+                {
+                    temp = DX_Textbox.Text;
+                    DX_Textbox.Text = BX_Textbox.Text;
+                    BX_Textbox.Text = temp;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "cx")
+                {
+                    temp = DX_Textbox.Text;
+                    DX_Textbox.Text = CX_Textbox.Text;
+                    CX_Textbox.Text = temp;
+                }
 
-                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
-                    EqualizeX_HL(); // update the H and L registers with the corresponding values X register
-                }
-                else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
-                {
-                    string temp;
-
-                    if ((commandAux1 == "al" && commandAux2 == "bl") || (commandAux1 == "bl" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = BL_Textbox.Text;
-                        BL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "cl") || (commandAux1 == "cl" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = CL_Textbox.Text;
-                        CL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = DL_Textbox.Text;
-                        DL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = AH_Textbox.Text;
-                        AH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = BH_Textbox.Text;
-                        BH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "al" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "al"))
-                    {
-                        temp = AL_Textbox.Text;
-                        AL_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "cl") || (commandAux1 == "cl" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = CL_Textbox.Text;
-                        CL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = DL_Textbox.Text;
-                        DL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = AH_Textbox.Text;
-                        AH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = BH_Textbox.Text;
-                        BH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "bl"))
-                    {
-                        temp = BL_Textbox.Text;
-                        BL_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "cl" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "cl"))
-                    {
-                        temp = CL_Textbox.Text;
-                        CL_Textbox.Text = DL_Textbox.Text;
-                        DL_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "cl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "cl"))
-                    {
-                        temp = CL_Textbox.Text;
-                        CL_Textbox.Text = AH_Textbox.Text;
-                        AH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "cl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "cl"))
-                    {
-                        temp = CL_Textbox.Text;
-                        CL_Textbox.Text = BH_Textbox.Text;
-                        BH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "cl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "cl"))
-                    {
-                        temp = CL_Textbox.Text;
-                        CL_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "cl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "cl"))
-                    {
-                        temp = CL_Textbox.Text;
-                        CL_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "dl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "dl"))
-                    {
-                        temp = DL_Textbox.Text;
-                        DL_Textbox.Text = AH_Textbox.Text;
-                        AH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "dl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "dl"))
-                    {
-                        temp = DL_Textbox.Text;
-                        DL_Textbox.Text = BH_Textbox.Text;
-                        BH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "dl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "dl"))
-                    {
-                        temp = DL_Textbox.Text;
-                        DL_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "dl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "dl"))
-                    {
-                        temp = DL_Textbox.Text;
-                        DL_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "ah" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "ah"))
-                    {
-                        temp = AH_Textbox.Text;
-                        AH_Textbox.Text = BH_Textbox.Text;
-                        BH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "ah" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "ah"))
-                    {
-                        temp = AH_Textbox.Text;
-                        AH_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "ah" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "ah"))
-                    {
-                        temp = AH_Textbox.Text;
-                        AH_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bh" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "bh"))
-                    {
-                        temp = BH_Textbox.Text;
-                        BH_Textbox.Text = CH_Textbox.Text;
-                        CH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "bh" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "bh"))
-                    {
-                        temp = BH_Textbox.Text;
-                        BH_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-                    else if ((commandAux1 == "ch" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "ch"))
-                    {
-                        temp = CH_Textbox.Text;
-                        CH_Textbox.Text = DH_Textbox.Text;
-                        DH_Textbox.Text = temp;
-                    }
-
-                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
-                    EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
-                }
-                else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
-                {
-                    MessageBox.Show("Wrong command. \nWrong register index.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else // it's impossible to move values in all other instances where the user provides two register indexes => the error popup message box will be displayed to the user
-                {
-                    MessageBox.Show("Wrong command. \nCannot exchange the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                EqualizeX_HL(); // update the H and L registers with the corresponding values X register
             }
+            else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
+            {
+                string temp;
+
+                if ((commandAux1 == "al" && commandAux2 == "bl") || (commandAux1 == "bl" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = BL_Textbox.Text;
+                    BL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "cl") || (commandAux1 == "cl" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = CL_Textbox.Text;
+                    CL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = DL_Textbox.Text;
+                    DL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = AH_Textbox.Text;
+                    AH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = BH_Textbox.Text;
+                    BH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "al" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "al"))
+                {
+                    temp = AL_Textbox.Text;
+                    AL_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "cl") || (commandAux1 == "cl" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = CL_Textbox.Text;
+                    CL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = DL_Textbox.Text;
+                    DL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = AH_Textbox.Text;
+                    AH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = BH_Textbox.Text;
+                    BH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "bl"))
+                {
+                    temp = BL_Textbox.Text;
+                    BL_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "cl" && commandAux2 == "dl") || (commandAux1 == "dl" && commandAux2 == "cl"))
+                {
+                    temp = CL_Textbox.Text;
+                    CL_Textbox.Text = DL_Textbox.Text;
+                    DL_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "cl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "cl"))
+                {
+                    temp = CL_Textbox.Text;
+                    CL_Textbox.Text = AH_Textbox.Text;
+                    AH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "cl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "cl"))
+                {
+                    temp = CL_Textbox.Text;
+                    CL_Textbox.Text = BH_Textbox.Text;
+                    BH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "cl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "cl"))
+                {
+                    temp = CL_Textbox.Text;
+                    CL_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "cl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "cl"))
+                {
+                    temp = CL_Textbox.Text;
+                    CL_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "dl" && commandAux2 == "ah") || (commandAux1 == "ah" && commandAux2 == "dl"))
+                {
+                    temp = DL_Textbox.Text;
+                    DL_Textbox.Text = AH_Textbox.Text;
+                    AH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "dl" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "dl"))
+                {
+                    temp = DL_Textbox.Text;
+                    DL_Textbox.Text = BH_Textbox.Text;
+                    BH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "dl" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "dl"))
+                {
+                    temp = DL_Textbox.Text;
+                    DL_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "dl" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "dl"))
+                {
+                    temp = DL_Textbox.Text;
+                    DL_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "ah" && commandAux2 == "bh") || (commandAux1 == "bh" && commandAux2 == "ah"))
+                {
+                    temp = AH_Textbox.Text;
+                    AH_Textbox.Text = BH_Textbox.Text;
+                    BH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "ah" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "ah"))
+                {
+                    temp = AH_Textbox.Text;
+                    AH_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "ah" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "ah"))
+                {
+                    temp = AH_Textbox.Text;
+                    AH_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bh" && commandAux2 == "ch") || (commandAux1 == "ch" && commandAux2 == "bh"))
+                {
+                    temp = BH_Textbox.Text;
+                    BH_Textbox.Text = CH_Textbox.Text;
+                    CH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "bh" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "bh"))
+                {
+                    temp = BH_Textbox.Text;
+                    BH_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+                else if ((commandAux1 == "ch" && commandAux2 == "dh") || (commandAux1 == "dh" && commandAux2 == "ch"))
+                {
+                    temp = CH_Textbox.Text;
+                    CH_Textbox.Text = DH_Textbox.Text;
+                    DH_Textbox.Text = temp;
+                }
+
+                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
+            }
+            else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
+            {
+                MessageBox.Show("Wrong command. \nWrong register index.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else // it's impossible to move values in all other instances where the user provides two register indexes => the error popup message box will be displayed to the user
+            {
+                MessageBox.Show("Wrong command. \nCannot exchange the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void ReverseListBoxOrder() // reverses the order of items in the history to show the most recent command on top
@@ -390,315 +385,309 @@ namespace Intel8086
 
         private void MovCommand(string commandAux1, string commandAux2) // method for moving value of one index to another index // HACK: Find a less retarded way to move values in registers - perhaps lists / dictionaries with elements displayed in textboxes ?
         {
-            if (commandAux1 == commandAux2) // if user tries to move values between the same index, an error message box appears
-            {
-                MessageBox.Show("Wrong command. \nCannot move the value between the same registers.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
+
+            List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
                 {
                     "ax", "bx", "cx", "dx"
                 };
 
-                List<string> HLRegList = new List<string>()
+            List<string> HLRegList = new List<string>()
                 {
                     "ah", "bh", "ch", "dh", "al", "bl", "cl", "dl"
                 };
 
 
-                if (XRegList.Contains(commandAux1) && XRegList.Contains(commandAux2)) // if both registers given in the mov command belong to the X register (16bit) index list then it's possible to move the value
+            if (XRegList.Contains(commandAux1) && XRegList.Contains(commandAux2)) // if both registers given in the mov command belong to the X register (16bit) index list then it's possible to move the value
+            {
+                if (commandAux1 == "ax" && commandAux2 == "bx")
                 {
-                    if (commandAux1 == "ax" && commandAux2 == "bx")
-                    {
-                        AX_Textbox.Text = BX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ax" && commandAux2 == "cx")
-                    {
-                        AX_Textbox.Text = CX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ax" && commandAux2 == "dx")
-                    {
-                        AX_Textbox.Text = DX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "ax")
-                    {
-                        BX_Textbox.Text = AX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "cx")
-                    {
-                        BX_Textbox.Text = CX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bx" && commandAux2 == "dx")
-                    {
-                        BX_Textbox.Text = DX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "ax")
-                    {
-                        CX_Textbox.Text = AX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "bx")
-                    {
-                        CX_Textbox.Text = BX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cx" && commandAux2 == "dx")
-                    {
-                        CX_Textbox.Text = DX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "ax")
-                    {
-                        DX_Textbox.Text = AX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "bx")
-                    {
-                        DX_Textbox.Text = BX_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dx" && commandAux2 == "cx")
-                    {
-                        DX_Textbox.Text = CX_Textbox.Text;
-                    }
+                    AX_Textbox.Text = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "ax" && commandAux2 == "cx")
+                {
+                    AX_Textbox.Text = CX_Textbox.Text;
+                }
+                else if (commandAux1 == "ax" && commandAux2 == "dx")
+                {
+                    AX_Textbox.Text = DX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "ax")
+                {
+                    BX_Textbox.Text = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "cx")
+                {
+                    BX_Textbox.Text = CX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx" && commandAux2 == "dx")
+                {
+                    BX_Textbox.Text = DX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "ax")
+                {
+                    CX_Textbox.Text = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "bx")
+                {
+                    CX_Textbox.Text = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx" && commandAux2 == "dx")
+                {
+                    CX_Textbox.Text = DX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "ax")
+                {
+                    DX_Textbox.Text = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "bx")
+                {
+                    DX_Textbox.Text = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx" && commandAux2 == "cx")
+                {
+                    DX_Textbox.Text = CX_Textbox.Text;
+                }
 
-                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
-                    EqualizeX_HL(); // update the H and L registers with the corresponding values X register
-                }
-                else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
+                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                EqualizeX_HL(); // update the H and L registers with the corresponding values X register
+            }
+            else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
+            {
+                if (commandAux1 == "al" && commandAux2 == "bl")
                 {
-                    if (commandAux1 == "al" && commandAux2 == "bl")
-                    {
-                        AL_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "cl")
-                    {
-                        AL_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "dl")
-                    {
-                        AL_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "ah")
-                    {
-                        AL_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "bh")
-                    {
-                        AL_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "ch")
-                    {
-                        AL_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "al" && commandAux2 == "dh")
-                    {
-                        AL_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "al")
-                    {
-                        BL_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "cl")
-                    {
-                        BL_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "dl")
-                    {
-                        BL_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "ah")
-                    {
-                        BL_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "bh")
-                    {
-                        BL_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "ch")
-                    {
-                        BL_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bl" && commandAux2 == "dh")
-                    {
-                        BL_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "al")
-                    {
-                        CL_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "bl")
-                    {
-                        CL_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "dl")
-                    {
-                        CL_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "ah")
-                    {
-                        CL_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "bh")
-                    {
-                        CL_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "ch")
-                    {
-                        CL_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "cl" && commandAux2 == "dh")
-                    {
-                        CL_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "al")
-                    {
-                        DL_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "bl")
-                    {
-                        DL_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "cl")
-                    {
-                        DL_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "ah")
-                    {
-                        DL_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "bh")
-                    {
-                        DL_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "ch")
-                    {
-                        DL_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dl" && commandAux2 == "dh")
-                    {
-                        DL_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "al")
-                    {
-                        AH_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "bl")
-                    {
-                        AH_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "cl")
-                    {
-                        AH_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "dl")
-                    {
-                        AH_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "bh")
-                    {
-                        AH_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "ch")
-                    {
-                        AH_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ah" && commandAux2 == "dh")
-                    {
-                        AH_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "al")
-                    {
-                        BH_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "bl")
-                    {
-                        BH_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "cl")
-                    {
-                        BH_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "dl")
-                    {
-                        BH_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "ah")
-                    {
-                        BH_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "ch")
-                    {
-                        BH_Textbox.Text = CH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "bh" && commandAux2 == "dh")
-                    {
-                        BH_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "al")
-                    {
-                        CH_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "bl")
-                    {
-                        CH_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "cl")
-                    {
-                        CH_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "dl")
-                    {
-                        CH_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "ah")
-                    {
-                        CH_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "bh")
-                    {
-                        CH_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "ch" && commandAux2 == "dh")
-                    {
-                        CH_Textbox.Text = DH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "al")
-                    {
-                        DH_Textbox.Text = AL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "bl")
-                    {
-                        DH_Textbox.Text = BL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "cl")
-                    {
-                        DH_Textbox.Text = CL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "dl")
-                    {
-                        DH_Textbox.Text = DL_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "ah")
-                    {
-                        DH_Textbox.Text = AH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "bh")
-                    {
-                        DH_Textbox.Text = BH_Textbox.Text;
-                    }
-                    else if (commandAux1 == "dh" && commandAux2 == "ch")
-                    {
-                        DH_Textbox.Text = CH_Textbox.Text;
-                    }
+                    AL_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "cl")
+                {
+                    AL_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "dl")
+                {
+                    AL_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "ah")
+                {
+                    AL_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "bh")
+                {
+                    AL_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "ch")
+                {
+                    AL_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "al" && commandAux2 == "dh")
+                {
+                    AL_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "al")
+                {
+                    BL_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "cl")
+                {
+                    BL_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "dl")
+                {
+                    BL_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "ah")
+                {
+                    BL_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "bh")
+                {
+                    BL_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "ch")
+                {
+                    BL_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "bl" && commandAux2 == "dh")
+                {
+                    BL_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "al")
+                {
+                    CL_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "bl")
+                {
+                    CL_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "dl")
+                {
+                    CL_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "ah")
+                {
+                    CL_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "bh")
+                {
+                    CL_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "ch")
+                {
+                    CL_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "cl" && commandAux2 == "dh")
+                {
+                    CL_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "al")
+                {
+                    DL_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "bl")
+                {
+                    DL_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "cl")
+                {
+                    DL_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "ah")
+                {
+                    DL_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "bh")
+                {
+                    DL_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "ch")
+                {
+                    DL_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "dl" && commandAux2 == "dh")
+                {
+                    DL_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "al")
+                {
+                    AH_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "bl")
+                {
+                    AH_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "cl")
+                {
+                    AH_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "dl")
+                {
+                    AH_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "bh")
+                {
+                    AH_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "ch")
+                {
+                    AH_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "ah" && commandAux2 == "dh")
+                {
+                    AH_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "al")
+                {
+                    BH_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "bl")
+                {
+                    BH_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "cl")
+                {
+                    BH_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "dl")
+                {
+                    BH_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "ah")
+                {
+                    BH_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "ch")
+                {
+                    BH_Textbox.Text = CH_Textbox.Text;
+                }
+                else if (commandAux1 == "bh" && commandAux2 == "dh")
+                {
+                    BH_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "al")
+                {
+                    CH_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "bl")
+                {
+                    CH_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "cl")
+                {
+                    CH_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "dl")
+                {
+                    CH_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "ah")
+                {
+                    CH_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "bh")
+                {
+                    CH_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "ch" && commandAux2 == "dh")
+                {
+                    CH_Textbox.Text = DH_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "al")
+                {
+                    DH_Textbox.Text = AL_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "bl")
+                {
+                    DH_Textbox.Text = BL_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "cl")
+                {
+                    DH_Textbox.Text = CL_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "dl")
+                {
+                    DH_Textbox.Text = DL_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "ah")
+                {
+                    DH_Textbox.Text = AH_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "bh")
+                {
+                    DH_Textbox.Text = BH_Textbox.Text;
+                }
+                else if (commandAux1 == "dh" && commandAux2 == "ch")
+                {
+                    DH_Textbox.Text = CH_Textbox.Text;
+                }
 
-                    CLI_Textbox.Text = ""; // clears the command line after the command is entered
-                    EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
-                }
-                else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
-                {
-                    MessageBox.Show("Wrong command. \nWrong register index.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else // warns of trying to move value between the registers of a different size (H/L -> X and vice versa)
-                {
-                    MessageBox.Show("Wrong command. \nCannot exchange the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
+            }
+            else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
+            {
+                MessageBox.Show("Wrong command. \nWrong register index.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else // warns of trying to move value between the registers of a different size (H/L -> X and vice versa)
+            {
+                MessageBox.Show("Wrong command. \nCannot exchange the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
