@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Collections;
 
 namespace Intel8086
 {
@@ -14,13 +14,13 @@ namespace Intel8086
             Stack intelStack = new Stack();
         }
 
-        private void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
+        public void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
         {
             try
             {
                 if (CLI_Textbox.Text.Length == 0) // if there's no command, show warning popup message box
                 {
-                    MessageBox.Show("Command is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    EmptyCommand();
                 }
                 else
                 {
@@ -43,7 +43,7 @@ namespace Intel8086
                         else // else set the registers to zero
                         {
                             ZeroRegisters();
-                            CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                            ClearConsole();
                         }
                     }
                     else if (commandType == "random")
@@ -55,7 +55,7 @@ namespace Intel8086
                         else // else fill the registers with random 4-digit hex numbers
                         {
                             RandomRegisters();
-                            CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                            ClearConsole();
                         }
                     }
                     else if (commandType == "mov")
@@ -95,17 +95,33 @@ namespace Intel8086
                     }
                     else if (commandType == "push")
                     {
-                        string commandAux = commandStringArr[1].ToLower();
-                        PushCommand(commandAux);
+                        if (commandStringArr.Length > 2)
+                        {
+                            CommandTooManyArguments();
+                        }
+                        else
+                        {
+                            string commandAux = commandStringArr[1].ToLower();
+                            PushCommandStack(commandAux);
+                            PushUpdateStackPointer();
+                        }
                     }
                     else if (commandType == "pop")
                     {
-                        string commandAux = commandStringArr[1].ToLower();
-                        PopCommand(commandAux);
+                        if (commandStringArr.Length > 2)
+                        {
+                            CommandTooManyArguments();
+                        }
+                        else
+                        {
+                            string commandAux = commandStringArr[1].ToLower();
+                            PopCommandStack(commandAux);
+                            PopUpdateStackPointer();
+                        }
                     }
                     else // any different command returns a popup error message box
                     {
-                        MessageBox.Show("Command unknown. \nPlease take a look at the command list at the bottom of the main window.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        WrongCommand();
                     }
 
                     CLI_Textbox.Focus(); // keeps the focus on the command line instead of focusing on the send button after it's clicked to activate the command
@@ -113,20 +129,28 @@ namespace Intel8086
             }
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Wrong command. \nPlease check the command before trying again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                WrongCommand();
             }
         }
 
-        private void CommandTooManyArguments()
+        public void PopCommandStack(string commandAux) // TODO: figure out how to make the stack work
         {
-            MessageBox.Show("Command has too many arguments. \nCheck available commands and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           
+            //AX_Textbox.Text = intelStack.Pop();
         }
 
-        private void PopCommand(string CommandAux)
+        private void PushCommandStack(string commandAux)
+        {
+            //intelStack.Push(AX_Textbox.Text);
+        }
+
+        
+
+        private void PopUpdateStackPointer()
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue > 1)
+            if (intValue > 1) //checks if theres anything on the stack before trying to pop
             {
                 intValue += 2;
                 string hexValue = intValue.ToString("X4");
@@ -138,11 +162,11 @@ namespace Intel8086
             }
         }
 
-        private void PushCommand(string CommandAux)
+        private void PushUpdateStackPointer()
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue < 65535)
+            if (intValue < 65535) // checks if the stack is full before trying to push another value
             {
                 intValue -= 2;
                 string hexValue = intValue.ToString("X4");
@@ -244,7 +268,7 @@ namespace Intel8086
                     CX_Textbox.Text = temp;
                 }
 
-                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                ClearConsole(); // clears the command line after the command is entered
                 EqualizeX_HL(); // update the H and L registers with the corresponding values X register
             }
             else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
@@ -420,7 +444,7 @@ namespace Intel8086
                     DH_Textbox.Text = temp;
                 }
 
-                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                ClearConsole(); // clears the command line after the command is entered
                 EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
             }
             else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
@@ -432,16 +456,6 @@ namespace Intel8086
                 MessageBox.Show("Wrong command. \nCannot exchange the value between registers of a different size.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        private void ReverseListBoxOrder() // reverses the order of items in the history to show the most recent command on top
-        {
-            for (int i = 0; i < CLI_History_ListBox.Items.Count / 2; i++)
-            {
-                var tmp = CLI_History_ListBox.Items[i];
-                CLI_History_ListBox.Items[i] = CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1];
-                CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1] = tmp;
-            }
         }
 
         private void MovCommand(string commandAux1, string commandAux2) // method for moving value of one index to another index // HACK: Find a less retarded way to move values in registers - perhaps lists / dictionaries with elements displayed in textboxes ?
@@ -509,7 +523,7 @@ namespace Intel8086
                     DX_Textbox.Text = CX_Textbox.Text;
                 }
 
-                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                ClearConsole(); // clears the command line after the command is entered
                 EqualizeX_HL(); // update the H and L registers with the corresponding values X register
             }
             else if (HLRegList.Contains(commandAux1) && HLRegList.Contains(commandAux2)) // if both registers belong to H/L register (8bit) list then it's possible to move their value
@@ -739,7 +753,7 @@ namespace Intel8086
                     DH_Textbox.Text = CH_Textbox.Text;
                 }
 
-                CLI_Textbox.Text = ""; // clears the command line after the command is entered
+                ClearConsole(); // clears the command line after the command is entered
                 EqualizeHL_X(); // update the H and L registers with corresponding values from the X register
             }
             else if ((!XRegList.Contains(commandAux1) && !HLRegList.Contains(commandAux1)) || (!XRegList.Contains(commandAux2) && !HLRegList.Contains(commandAux2))) // warns of using an unexisting register index
@@ -849,6 +863,7 @@ namespace Intel8086
             }
         }
 
+        // Zero / Random
         private void RandomRegisters()
         {
             // input random 4-digit hex values into all X registers and sets the Stack Pointer to zero;
@@ -880,6 +895,7 @@ namespace Intel8086
             EqualizeX_HL();
         }
 
+        // Updating X and H/L registers after modifications
         private void EqualizeX_HL() // parse all X registers into respective H and L registers to keep them up to date. Used after any/all (cmds: zero, random) X registers are modified
         {
             AH_Textbox.Text = AX_Textbox.Text.Substring(0, 2);
@@ -898,6 +914,38 @@ namespace Intel8086
             BX_Textbox.Text = BH_Textbox.Text + BL_Textbox.Text;
             CX_Textbox.Text = CH_Textbox.Text + CL_Textbox.Text;
             DX_Textbox.Text = DH_Textbox.Text + DL_Textbox.Text;
+        }
+
+        // GUI Maintenance
+        private void ClearConsole()
+        {
+            CLI_Textbox.Text = "";
+        }
+
+        private void ReverseListBoxOrder() // reverses the order of items in the history to show the most recent command on top
+        {
+            for (int i = 0; i < CLI_History_ListBox.Items.Count / 2; i++)
+            {
+                var tmp = CLI_History_ListBox.Items[i];
+                CLI_History_ListBox.Items[i] = CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1];
+                CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1] = tmp;
+            }
+        }
+
+        // Errors
+        private void EmptyCommand()
+        {
+            MessageBox.Show("Command is empty.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void WrongCommand()
+        {
+            MessageBox.Show("Wrong command. \nPlease check the command before trying again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void CommandTooManyArguments()
+        {
+            MessageBox.Show("Command has too many arguments. \nCheck available commands and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
