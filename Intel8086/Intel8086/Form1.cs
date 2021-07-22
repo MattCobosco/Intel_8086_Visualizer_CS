@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Intel8086
 {
@@ -10,6 +11,7 @@ namespace Intel8086
         {
             InitializeComponent();
             RandomRegisters(); // program starts with random hex values in the register
+            Stack intelStack = new Stack();
         }
 
         private void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
@@ -38,7 +40,7 @@ namespace Intel8086
                         {
                             CommandTooManyArguments();
                         }
-                        else // else zero the registers
+                        else // else set the registers to zero
                         {
                             ZeroRegisters();
                             CLI_Textbox.Text = ""; // clears the command line after the command is entered
@@ -124,7 +126,7 @@ namespace Intel8086
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue > 65535)
+            if (intValue > 1)
             {
                 intValue += 2;
                 string hexValue = intValue.ToString("X4");
@@ -140,7 +142,7 @@ namespace Intel8086
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue < 2)
+            if (intValue < 65535)
             {
                 intValue -= 2;
                 string hexValue = intValue.ToString("X4");
@@ -849,28 +851,26 @@ namespace Intel8086
 
         private void RandomRegisters()
         {
-            // input random 4-digit hex values into all X registers and Stack Pointer;
+            // input random 4-digit hex values into all X registers and sets the Stack Pointer to zero;
             Random random = new Random();
             int numAX = random.Next(0, 65536);
             int numBX = random.Next(0, 65536);
             int numCX = random.Next(0, 65536);
             int numDX = random.Next(0, 65536);
-            int numSP = random.Next(0/2, 65536/2)*2;
             string hexStringAX = numAX.ToString("X4");
             string hexStringBX = numBX.ToString("X4");
             string hexStringCX = numCX.ToString("X4");
             string hexStringDX = numDX.ToString("X4");
-            string hexStringSP = numSP.ToString("X4");
             AX_Textbox.Text = hexStringAX;
             BX_Textbox.Text = hexStringBX;
             CX_Textbox.Text = hexStringDX;
             DX_Textbox.Text = hexStringCX;
-            SP_Textbox.Text = hexStringSP;
+            SP_Textbox.Text = 65534.ToString("X4");
 
             EqualizeX_HL();
         }
 
-        private void ZeroRegisters() // fill X registers with 4 zeros
+        private void ZeroRegisters() // fill X registers and Stack Pointer with zeros
         {
             AX_Textbox.Text = "0000";
             BX_Textbox.Text = "0000";
