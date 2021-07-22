@@ -34,22 +34,21 @@ namespace Intel8086
 
                     if (commandType == "zero")
                     {
-                        if (commandStringArr.Length > 1) // if zero command has too many elements, show warning popup asking to use the correct command
+                        if (commandStringArr.Length > 1) // if zero command has too many arguments, show warning popup asking to use the correct command
                         {
-                            MessageBox.Show("Command has too many elements. \nTry \"zero\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CommandTooManyArguments();
                         }
                         else // else zero the registers
                         {
                             ZeroRegisters();
                             CLI_Textbox.Text = ""; // clears the command line after the command is entered
                         }
-
                     }
                     else if (commandType == "random")
                     {
-                        if (commandStringArr.Length > 1) // if random command has too many elements, show warning popup asking to use the correct command
+                        if (commandStringArr.Length > 1) // if random command has too many arguments, show warning popup asking to use the correct command
                         {
-                            MessageBox.Show("Command has too many elements. \nTry \"random\".", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CommandTooManyArguments();
                         }
                         else // else fill the registers with random 4-digit hex numbers
                         {
@@ -59,25 +58,48 @@ namespace Intel8086
                     }
                     else if (commandType == "mov")
                     {
-                        string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
-                        string commandAux2 = commandStringArr[2].ToLower();
-                        bool commandIsNum = int.TryParse(commandAux2, out int commandAux2Num); // determine whether the user wants to move value from one register to another or whether they want to move number to a register
-
-                        if (commandIsNum) // if the user wants to move a number then use the method MovCommand which accepts a string and an int as parameters
+                        if (commandStringArr.Length > 3)
                         {
-
-                            MovCommand(commandAux1, commandAux2Num);
+                            CommandTooManyArguments();
                         }
-                        else // if the user wants to move a value from one register to another then use the method MovCommand which accepts two strings as parameters
+                        else
                         {
-                            MovCommand(commandAux1, commandAux2);
+                            string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
+                            string commandAux2 = commandStringArr[2].ToLower();
+                            bool commandIsNum = int.TryParse(commandAux2, out int commandAux2Num); // determine whether the user wants to move value from one register to another or whether they want to move number to a register
+
+                            if (commandIsNum) // if the user wants to move a number then use the method MovCommand which accepts a string and an int as parameters
+                            {
+                                MovCommand(commandAux1, commandAux2Num);
+                            }
+                            else // if the user wants to move a value from one register to another then use the method MovCommand which accepts two strings as parameters
+                            {
+                                MovCommand(commandAux1, commandAux2);
+                            }
                         }
                     }
                     else if (commandType == "xchg")
                     {
-                        string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
-                        string commandAux2 = commandStringArr[2].ToLower();
-                        XchgCommand(commandAux1, commandAux2);
+                        if (commandStringArr.Length > 3)
+                        {
+                            CommandTooManyArguments();
+                        }
+                        else
+                        {
+                            string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
+                            string commandAux2 = commandStringArr[2].ToLower();
+                            XchgCommand(commandAux1, commandAux2);
+                        }
+                    }
+                    else if (commandType == "push")
+                    {
+                        string commandAux = commandStringArr[1].ToLower();
+                        PushCommand(commandAux);
+                    }
+                    else if (commandType == "pop")
+                    {
+                        string commandAux = commandStringArr[1].ToLower();
+                        PopCommand(commandAux);
                     }
                     else // any different command returns a popup error message box
                     {
@@ -90,6 +112,43 @@ namespace Intel8086
             catch (IndexOutOfRangeException)
             {
                 MessageBox.Show("Wrong command. \nPlease check the command before trying again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CommandTooManyArguments()
+        {
+            MessageBox.Show("Command has too many arguments. \nCheck available commands and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void PopCommand(string CommandAux)
+        {
+            int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
+
+            if (intValue > 1)
+            {
+                intValue -= 2;
+                string hexValue = intValue.ToString("X4");
+                SP_Textbox.Text = hexValue;
+            }
+            else
+            {
+                MessageBox.Show("Stack is empty, cannot POP.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PushCommand(string CommandAux)
+        {
+            int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
+
+            if (intValue < 65535)
+            {
+                intValue += 2;
+                string hexValue = intValue.ToString("X4");
+                SP_Textbox.Text = hexValue;
+            }
+            else
+            {
+                MessageBox.Show("Stack is full, cannot PUSH.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -796,15 +855,17 @@ namespace Intel8086
             int numBX = random.Next(0, 65536);
             int numCX = random.Next(0, 65536);
             int numDX = random.Next(0, 65536);
+            int numSP = random.Next(0/2, 65536/2)*2;
             string hexStringAX = numAX.ToString("X4");
             string hexStringBX = numBX.ToString("X4");
             string hexStringCX = numCX.ToString("X4");
             string hexStringDX = numDX.ToString("X4");
-
+            string hexStringSP = numSP.ToString("X4");
             AX_Textbox.Text = hexStringAX;
             BX_Textbox.Text = hexStringBX;
             CX_Textbox.Text = hexStringDX;
             DX_Textbox.Text = hexStringCX;
+            SP_Textbox.Text = hexStringSP;
 
             EqualizeX_HL();
         }
@@ -815,6 +876,7 @@ namespace Intel8086
             BX_Textbox.Text = "0000";
             CX_Textbox.Text = "0000";
             DX_Textbox.Text = "0000";
+            SP_Textbox.Text = "0000";
             EqualizeX_HL();
         }
 

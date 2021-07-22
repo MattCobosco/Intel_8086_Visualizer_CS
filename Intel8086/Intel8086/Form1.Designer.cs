@@ -58,11 +58,11 @@ namespace Intel8086
             this.AL_Textbox = new System.Windows.Forms.TextBox();
             this.CLI_History_ListBox = new System.Windows.Forms.ListBox();
             this.Command_Desc_Lbl = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.SI_Textbox = new System.Windows.Forms.TextBox();
+            this.DI_Textbox = new System.Windows.Forms.TextBox();
+            this.BP_Textbox = new System.Windows.Forms.TextBox();
+            this.SP_Textbox = new System.Windows.Forms.TextBox();
+            this.DISP_Textbox = new System.Windows.Forms.TextBox();
             this.SI_Lbl = new System.Windows.Forms.Label();
             this.DI_Lbl = new System.Windows.Forms.Label();
             this.BP_Lbl = new System.Windows.Forms.Label();
@@ -377,65 +377,65 @@ namespace Intel8086
             this.Command_Desc_Lbl.TabIndex = 35;
             this.Command_Desc_Lbl.Text = resources.GetString("Command_Desc_Lbl.Text");
             // 
-            // textBox4
+            // SI_Textbox
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox4.Location = new System.Drawing.Point(690, 27);
-            this.textBox4.MaxLength = 4;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 29);
-            this.textBox4.TabIndex = 39;
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SI_Textbox.Enabled = false;
+            this.SI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SI_Textbox.Location = new System.Drawing.Point(690, 27);
+            this.SI_Textbox.MaxLength = 4;
+            this.SI_Textbox.Name = "SI_Textbox";
+            this.SI_Textbox.ReadOnly = true;
+            this.SI_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.SI_Textbox.TabIndex = 39;
+            this.SI_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox1
+            // DI_Textbox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(690, 76);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 29);
-            this.textBox1.TabIndex = 40;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DI_Textbox.Enabled = false;
+            this.DI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DI_Textbox.Location = new System.Drawing.Point(690, 76);
+            this.DI_Textbox.MaxLength = 4;
+            this.DI_Textbox.Name = "DI_Textbox";
+            this.DI_Textbox.ReadOnly = true;
+            this.DI_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.DI_Textbox.TabIndex = 40;
+            this.DI_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // BP_Textbox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(690, 123);
-            this.textBox2.MaxLength = 4;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 29);
-            this.textBox2.TabIndex = 41;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BP_Textbox.Enabled = false;
+            this.BP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BP_Textbox.Location = new System.Drawing.Point(690, 123);
+            this.BP_Textbox.MaxLength = 4;
+            this.BP_Textbox.Name = "BP_Textbox";
+            this.BP_Textbox.ReadOnly = true;
+            this.BP_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.BP_Textbox.TabIndex = 41;
+            this.BP_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // SP_Textbox
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox3.Location = new System.Drawing.Point(690, 172);
-            this.textBox3.MaxLength = 4;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 29);
-            this.textBox3.TabIndex = 42;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SP_Textbox.Enabled = false;
+            this.SP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SP_Textbox.Location = new System.Drawing.Point(690, 172);
+            this.SP_Textbox.MaxLength = 4;
+            this.SP_Textbox.Name = "SP_Textbox";
+            this.SP_Textbox.ReadOnly = true;
+            this.SP_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.SP_Textbox.TabIndex = 42;
+            this.SP_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox5
+            // DISP_Textbox
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox5.Location = new System.Drawing.Point(690, 242);
-            this.textBox5.MaxLength = 4;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 29);
-            this.textBox5.TabIndex = 43;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DISP_Textbox.Enabled = false;
+            this.DISP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DISP_Textbox.Location = new System.Drawing.Point(690, 242);
+            this.DISP_Textbox.MaxLength = 4;
+            this.DISP_Textbox.Name = "DISP_Textbox";
+            this.DISP_Textbox.ReadOnly = true;
+            this.DISP_Textbox.Size = new System.Drawing.Size(100, 29);
+            this.DISP_Textbox.TabIndex = 43;
+            this.DISP_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SI_Lbl
             // 
@@ -547,11 +547,11 @@ namespace Intel8086
             this.Controls.Add(this.BP_Lbl);
             this.Controls.Add(this.DI_Lbl);
             this.Controls.Add(this.SI_Lbl);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.DISP_Textbox);
+            this.Controls.Add(this.SP_Textbox);
+            this.Controls.Add(this.BP_Textbox);
+            this.Controls.Add(this.DI_Textbox);
+            this.Controls.Add(this.SI_Textbox);
             this.Controls.Add(this.Command_Desc_Lbl);
             this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
@@ -617,11 +617,11 @@ namespace Intel8086
         private System.Windows.Forms.TextBox AL_Textbox;
         private System.Windows.Forms.ListBox CLI_History_ListBox;
         private System.Windows.Forms.Label Command_Desc_Lbl;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox SI_Textbox;
+        private System.Windows.Forms.TextBox DI_Textbox;
+        private System.Windows.Forms.TextBox BP_Textbox;
+        private System.Windows.Forms.TextBox SP_Textbox;
+        private System.Windows.Forms.TextBox DISP_Textbox;
         private System.Windows.Forms.Label SI_Lbl;
         private System.Windows.Forms.Label DI_Lbl;
         private System.Windows.Forms.Label BP_Lbl;
