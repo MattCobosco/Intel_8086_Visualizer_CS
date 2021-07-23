@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,11 +6,12 @@ namespace Intel8086
 {
     public partial class Form1 : Form
     {
+        Stack<string> intelStack = new Stack<string>();
+
         public Form1()
         {
             InitializeComponent();
-            RandomRegisters(); // program starts with random hex values in the register
-            Stack intelStack = new Stack();
+            ZeroRegisters(); // program starts with zeros in the registers
         }
 
         public void Send_Button_Click(object sender, EventArgs e) // enter button (previously send) initializes commands
@@ -102,8 +102,8 @@ namespace Intel8086
                         else
                         {
                             string commandAux = commandStringArr[1].ToLower();
-                            PushCommandStack(commandAux);
                             PushUpdateStackPointer();
+                            PushCommandStack(commandAux);
                         }
                     }
                     else if (commandType == "pop")
@@ -111,12 +111,14 @@ namespace Intel8086
                         if (commandStringArr.Length > 2)
                         {
                             CommandTooManyArguments();
+                            ClearConsole();
                         }
                         else
                         {
                             string commandAux = commandStringArr[1].ToLower();
-                            PopCommandStack(commandAux);
                             PopUpdateStackPointer();
+                            PopCommandStack(commandAux);
+                            ClearConsole();
                         }
                     }
                     else // any different command returns a popup error message box
@@ -133,32 +135,97 @@ namespace Intel8086
             }
         }
 
-        public void PopCommandStack(string commandAux) // TODO: figure out how to make the stack work
+        private void PopCommandStack(string commandAux) // TODO: figure out how to make the stack work
         {
-           
-            //AX_Textbox.Text = intelStack.Pop();
+            try
+            {
+
+                List<string> XRegList = new List<string>() // lists with X register indexes to check command validity
+                {
+                    "ax", "bx", "cx", "dx"
+                };
+
+                if (XRegList.Contains(commandAux))
+                {
+                    if (commandAux == "ax")
+                    {
+                        AX_Textbox.Text = intelStack.Peek();
+                    }
+                    else if (commandAux == "bx")
+                    {
+                        BX_Textbox.Text = intelStack.Peek();
+                    }
+                    else if (commandAux == "cx")
+                    {
+                        CX_Textbox.Text = intelStack.Peek();
+                    }
+                    else
+                    {
+                        DX_Textbox.Text = intelStack.Peek();
+                    }
+                }
+                else
+                {
+                    WrongCommand();
+                }
+
+                intelStack.Pop();
+                EqualizeX_HL();
+            }
+            catch (System.InvalidOperationException)
+            {
+                MessageBox.Show("Stack is empty, cannot POP.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void PushCommandStack(string commandAux)
         {
-            //intelStack.Push(AX_Textbox.Text);
-        }
+            try
+            {
+                List<string> XRegList = new List<string>() // lists with X register indexes to check command validity
+                {
+                    "ax", "bx", "cx", "dx"
+                };
 
-        
+                if (XRegList.Contains(commandAux))
+                {
+                    if (commandAux == "ax")
+                    {
+                        intelStack.Push(AX_Textbox.Text);
+                    }
+                    else if (commandAux == "bx")
+                    {
+                        intelStack.Push(BX_Textbox.Text);
+                    }
+                    else if (commandAux == "cx")
+                    {
+                        intelStack.Push(CX_Textbox.Text);
+                    }
+                    else
+                    {
+                        intelStack.Push(DX_Textbox.Text);
+                    }
+                }
+                else
+                {
+                    WrongCommand();
+                }
+            }
+            catch (System.InvalidOperationException)
+            {
+
+            }
+        }
 
         private void PopUpdateStackPointer()
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue > 1) //checks if theres anything on the stack before trying to pop
+            if (intValue < 65534) //checks if theres anything on the stack before trying to pop
             {
                 intValue += 2;
                 string hexValue = intValue.ToString("X4");
                 SP_Textbox.Text = hexValue;
-            }
-            else
-            {
-                MessageBox.Show("Stack is empty, cannot POP.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -166,7 +233,7 @@ namespace Intel8086
         {
             int intValue = Convert.ToInt32(SP_Textbox.Text, 16);
 
-            if (intValue < 65535) // checks if the stack is full before trying to push another value
+            if (intValue > 1) // checks if the stack is full before trying to push another value
             {
                 intValue -= 2;
                 string hexValue = intValue.ToString("X4");
@@ -866,7 +933,7 @@ namespace Intel8086
         // Zero / Random
         private void RandomRegisters()
         {
-            // input random 4-digit hex values into all X registers and sets the Stack Pointer to zero;
+            // input random 4-digit hex values into all X registers;
             Random random = new Random();
             int numAX = random.Next(0, 65536);
             int numBX = random.Next(0, 65536);
@@ -880,7 +947,6 @@ namespace Intel8086
             BX_Textbox.Text = hexStringBX;
             CX_Textbox.Text = hexStringDX;
             DX_Textbox.Text = hexStringCX;
-            SP_Textbox.Text = 65534.ToString("X4");
 
             EqualizeX_HL();
         }
