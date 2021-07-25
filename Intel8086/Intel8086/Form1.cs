@@ -978,13 +978,11 @@ namespace Intel8086
             int numBX = random.Next(0, 65536);
             int numCX = random.Next(0, 65536);
             int numDX = random.Next(0, 65536);
-            int numBP = random.Next(0, 65536);
 
             AX_Textbox.Text = numAX.ToString("X4");
             BX_Textbox.Text = numBX.ToString("X4");
             CX_Textbox.Text = numCX.ToString("X4");
             DX_Textbox.Text = numDX.ToString("X4");
-            BP_Textbox.Text = numBP.ToString("X4");
             
             EqualizeX_HL();
         }
