@@ -939,25 +939,28 @@ namespace Intel8086
             int numBX = random.Next(0, 65536);
             int numCX = random.Next(0, 65536);
             int numDX = random.Next(0, 65536);
-            string hexStringAX = numAX.ToString("X4");
-            string hexStringBX = numBX.ToString("X4");
-            string hexStringCX = numCX.ToString("X4");
-            string hexStringDX = numDX.ToString("X4");
-            AX_Textbox.Text = hexStringAX;
-            BX_Textbox.Text = hexStringBX;
-            CX_Textbox.Text = hexStringDX;
-            DX_Textbox.Text = hexStringCX;
+            int numBP = random.Next(0, 65536);
 
+            AX_Textbox.Text = numAX.ToString("X4");
+            BX_Textbox.Text = numBX.ToString("X4");
+            CX_Textbox.Text = numCX.ToString("X4");
+            DX_Textbox.Text = numDX.ToString("X4");
+            BP_Textbox.Text = numBP.ToString("X4");
+            
             EqualizeX_HL();
         }
 
-        private void ZeroRegisters() // fill X registers and Stack Pointer with zeros
+        private void ZeroRegisters() // fill registers, indexes and pointers and with zeros (Stack Pointer starts at 65534)
         {
             AX_Textbox.Text = "0000";
             BX_Textbox.Text = "0000";
             CX_Textbox.Text = "0000";
             DX_Textbox.Text = "0000";
-            SP_Textbox.Text = 65534.ToString("X4");
+            SI_Textbox.Text = "0000";
+            DI_Textbox.Text = "0000";
+            BP_Textbox.Text = "0000";
+            SP_Textbox.Text = 256.ToString("X4");
+
             EqualizeX_HL();
         }
 
