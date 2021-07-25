@@ -7,6 +7,8 @@ namespace Intel8086
     public partial class Form1 : Form
     {
         Stack<string> intelStack = new Stack<string>();
+        string[] intelMemory = new string[500000];
+
 
         public Form1()
         {
@@ -43,6 +45,7 @@ namespace Intel8086
                         else // else set the registers to zero
                         {
                             ZeroRegisters();
+                            ZeroMemory();
                             ClearConsole();
                         }
                     }
@@ -55,6 +58,7 @@ namespace Intel8086
                         else // else fill the registers with random 4-digit hex numbers
                         {
                             RandomRegisters();
+                            RandomMemory();
                             ClearConsole();
                         }
                     }
@@ -64,7 +68,7 @@ namespace Intel8086
                         {
                             CommandTooManyArguments();
                         }
-                        else
+                        else if (None_Rbtn.Checked)
                         {
                             string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
                             string commandAux2 = commandStringArr[2].ToLower();
@@ -77,6 +81,28 @@ namespace Intel8086
                             else // if the user wants to move a value from one register to another then use the method MovCommand which accepts two strings as parameters
                             {
                                 MovCommand(commandAux1, commandAux2);
+                            }
+                        }
+                        else
+                        {
+                            string commandAux1 = commandStringArr[1].ToLower();
+                            string commandAux2 = commandStringArr[2].ToLower();
+
+                            if (Indexed_Rbtn.Checked)
+                            {
+                                MovIndexedReg(commandAux1, commandAux2);
+                            }
+                            else if (Based_Rbtn.Checked)
+                            {
+                                MovBasedReg(commandAux1, commandAux2);
+                            }
+                            else if (Based_Indexed_Rbtn.Checked)
+                            {
+                                MovBasedIndexedReg(commandAux1, commandAux2);
+                            }
+                            else
+                            {
+                                WrongCommand();
                             }
                         }
                     }
@@ -135,7 +161,7 @@ namespace Intel8086
                         else
                         {
                             SetCommand(commandAux1, commandAux2);
-                           
+
                             ClearConsole();
                         }
                     }
@@ -153,10 +179,237 @@ namespace Intel8086
             }
         }
 
+        private void MovBasedIndexedReg(string commandAux1, string commandAux2)
+        {
+            int si = Convert.ToInt32(SI_Textbox.Text, 16);
+            int di = Convert.ToInt32(DI_Textbox.Text, 16);
+            int bp = Convert.ToInt32(BP_Textbox.Text, 16);
+            int bx = Convert.ToInt32(BX_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value;
+
+            if (commandAux2 == "si+bp")
+            {
+                value = si + bp + disp;
+            }
+            else if (commandAux2 == "si+bx")
+            {
+                value = si + bx + disp;
+            }
+            else if (commandAux2 == "di+bp")
+            {
+                value = di + bp;
+            }
+            else if (commandAux2 == "di+bx")
+            {
+                value = di + bx;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (MemtoReg_Rbtn.Checked)
+            {
+                if (commandAux1 == "ax")
+                {
+                    AX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "bx")
+                {
+                    BX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "cx")
+                {
+                    CX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "dx")
+                {
+                    DX_Textbox.Text = intelMemory[value];
+                }
+                else
+                {
+                    WrongCommand();
+                    return;
+                }
+            }
+            else
+            {
+                if (commandAux1 == "ax")
+                {
+                    intelMemory[value] = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx")
+                {
+                    intelMemory[value] = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx")
+                {
+                    intelMemory[value] = CX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx")
+                {
+                    intelMemory[value] = DX_Textbox.Text;
+                }
+                else
+                {
+                    WrongCommand();
+                }
+            }
+
+            EqualizeX_HL();
+        }
+
+        private void MovBasedReg(string commandAux1, string commandAux2)
+        {
+
+            int bp = Convert.ToInt32(BP_Textbox.Text, 16);
+            int bx = Convert.ToInt32(BX_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value;
+
+            if (commandAux2 == "bp")
+            {
+                value = bp + disp;
+            }
+            else if (commandAux2 == "bx")
+            {
+                value = bx + disp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (MemtoReg_Rbtn.Checked)
+            {
+                if (commandAux1 == "ax")
+                {
+                    AX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "bx")
+                {
+                    BX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "cx")
+                {
+                    CX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "dx")
+                {
+                    DX_Textbox.Text = intelMemory[value];
+                }
+                else
+                {
+                    WrongCommand();
+                    return;
+                }
+            }
+            else
+            {
+                if (commandAux1 == "ax")
+                {
+                    intelMemory[value] = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx")
+                {
+                    intelMemory[value] = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx")
+                {
+                    intelMemory[value] = CX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx")
+                {
+                    intelMemory[value] = DX_Textbox.Text;
+                }
+                else
+                {
+                    WrongCommand();
+                }
+            }
+
+            EqualizeX_HL();
+        }
+
+        private void MovIndexedReg(string commandAux1, string commandAux2)
+        {
+            int si = Convert.ToInt32(SI_Textbox.Text, 16);
+            int di = Convert.ToInt32(DI_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value = 0;
+
+            if (commandAux2 == "si")
+            {
+                value = si + disp;
+            }
+            else if (commandAux2 == "di")
+            {
+                value = di + disp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (MemtoReg_Rbtn.Checked)
+            {
+                if (commandAux1 == "ax")
+                {
+                    AX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "bx")
+                {
+                    BX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "cx")
+                {
+                    CX_Textbox.Text = intelMemory[value];
+                }
+                else if (commandAux1 == "dx")
+                {
+                    DX_Textbox.Text = intelMemory[value];
+                }
+                else
+                {
+                    WrongCommand();
+                    return;
+                }
+            }
+            else
+            {
+                if (commandAux1 == "ax")
+                {
+                    intelMemory[value] = AX_Textbox.Text;
+                }
+                else if (commandAux1 == "bx")
+                {
+                    intelMemory[value] = BX_Textbox.Text;
+                }
+                else if (commandAux1 == "cx")
+                {
+                    intelMemory[value] = CX_Textbox.Text;
+                }
+                else if (commandAux1 == "dx")
+                {
+                    intelMemory[value] = DX_Textbox.Text;
+                }
+                else
+                {
+                    WrongCommand();
+                }
+            }
+
+            EqualizeX_HL();
+        }
+
         private void UpdateBasePointer()
         {
             BP_Textbox.Text = SP_Textbox.Text;
-        }
+        } // updates base pointer every time a value is pushed or poped from a stack
 
         private void SetCommand(string commandAux1, int commandAux2) // fictional commands to set displacement and base pointer to desired values
         {
@@ -168,13 +421,21 @@ namespace Intel8086
             {
                 BP_Textbox.Text = commandAux2.ToString("X4");
             }
+            else if (commandAux1 == "si")
+            {
+                SI_Textbox.Text = commandAux2.ToString("X4");
+            }
+            else if (commandAux1 == "di")
+            {
+                DI_Textbox.Text = commandAux2.ToString("X4");
+            }
             else
             {
                 WrongCommand();
             }
         }
 
-        private void PopCommandStack(string commandAux) // TODO: figure out how to make the stack work
+        private void PopCommandStack(string commandAux)
         {
             try
             {
@@ -566,7 +827,6 @@ namespace Intel8086
 
         private void MovCommand(string commandAux1, string commandAux2) // method for moving value of one index to another index // HACK: Find a less retarded way to move values in registers - perhaps lists / dictionaries with elements displayed in textboxes ?
         {
-
             List<string> XRegList = new List<string>() // lists with X and HL register indexes to check command validity
                 {
                     "ax", "bx", "cx", "dx"
@@ -576,7 +836,6 @@ namespace Intel8086
                 {
                     "ah", "bh", "ch", "dh", "al", "bl", "cl", "dl"
                 };
-
 
             if (XRegList.Contains(commandAux1) && XRegList.Contains(commandAux2)) // if both registers given in the mov command belong to the X register (16bit) index list then it's possible to move the value
             {
@@ -974,16 +1233,14 @@ namespace Intel8086
         {
             // input random 4-digit hex values into all X registers;
             Random random = new Random();
-            int numAX = random.Next(0, 65536);
-            int numBX = random.Next(0, 65536);
-            int numCX = random.Next(0, 65536);
-            int numDX = random.Next(0, 65536);
 
-            AX_Textbox.Text = numAX.ToString("X4");
-            BX_Textbox.Text = numBX.ToString("X4");
-            CX_Textbox.Text = numCX.ToString("X4");
-            DX_Textbox.Text = numDX.ToString("X4");
-            
+            AX_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            BX_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            CX_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            DX_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            SI_Textbox.Text = random.Next(0, 65536).ToString("X4"); 
+            DI_Textbox.Text = random.Next(0, 65536).ToString("X4");
+
             EqualizeX_HL();
         }
 
@@ -996,9 +1253,24 @@ namespace Intel8086
             SI_Textbox.Text = "0000";
             DI_Textbox.Text = "0000";
             BP_Textbox.Text = "0000";
+            DISP_Textbox.Text = "0000";
             SP_Textbox.Text = 256.ToString("X4");
 
             EqualizeX_HL();
+        }
+
+        private void RandomMemory() // fill entire memory with random hex values
+        {
+            for (int i = 0; i < intelMemory.Length; i++)
+            {
+                Random random = new Random();
+                intelMemory[i] = random.Next(0, 65536).ToString("X4");
+            }
+        }
+
+        private void ZeroMemory() // fill entire memory with zeros
+        {
+            Array.Fill(intelMemory, "0000");
         }
 
         // Updating X and H/L registers after modifications

@@ -68,10 +68,15 @@ namespace Intel8086
             this.BP_Lbl = new System.Windows.Forms.Label();
             this.SP_Lbl = new System.Windows.Forms.Label();
             this.DISP_Lbl = new System.Windows.Forms.Label();
+            this.Command_History_Lbl = new System.Windows.Forms.Label();
             this.Indexed_Rbtn = new System.Windows.Forms.RadioButton();
             this.Based_Rbtn = new System.Windows.Forms.RadioButton();
             this.Based_Indexed_Rbtn = new System.Windows.Forms.RadioButton();
-            this.Command_History_Lbl = new System.Windows.Forms.Label();
+            this.None_Rbtn = new System.Windows.Forms.RadioButton();
+            this.MemtoReg_Rbtn = new System.Windows.Forms.RadioButton();
+            this.RegToMem_Rbtn = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AX_Textbox
@@ -247,13 +252,13 @@ namespace Intel8086
             this.CLI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CLI_Textbox.Location = new System.Drawing.Point(44, 242);
             this.CLI_Textbox.Name = "CLI_Textbox";
-            this.CLI_Textbox.Size = new System.Drawing.Size(410, 29);
+            this.CLI_Textbox.Size = new System.Drawing.Size(276, 29);
             this.CLI_Textbox.TabIndex = 24;
             // 
             // Enter_Button
             // 
             this.Enter_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Enter_Button.Location = new System.Drawing.Point(469, 231);
+            this.Enter_Button.Location = new System.Drawing.Point(356, 231);
             this.Enter_Button.Name = "Enter_Button";
             this.Enter_Button.Size = new System.Drawing.Size(98, 49);
             this.Enter_Button.TabIndex = 25;
@@ -487,42 +492,6 @@ namespace Intel8086
             this.DISP_Lbl.TabIndex = 48;
             this.DISP_Lbl.Text = "DISP";
             // 
-            // Indexed_Rbtn
-            // 
-            this.Indexed_Rbtn.AutoSize = true;
-            this.Indexed_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Indexed_Rbtn.Location = new System.Drawing.Point(487, 54);
-            this.Indexed_Rbtn.Name = "Indexed_Rbtn";
-            this.Indexed_Rbtn.Size = new System.Drawing.Size(114, 23);
-            this.Indexed_Rbtn.TabIndex = 49;
-            this.Indexed_Rbtn.TabStop = true;
-            this.Indexed_Rbtn.Text = "Indexed mode";
-            this.Indexed_Rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Based_Rbtn
-            // 
-            this.Based_Rbtn.AutoSize = true;
-            this.Based_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Based_Rbtn.Location = new System.Drawing.Point(487, 100);
-            this.Based_Rbtn.Name = "Based_Rbtn";
-            this.Based_Rbtn.Size = new System.Drawing.Size(102, 23);
-            this.Based_Rbtn.TabIndex = 50;
-            this.Based_Rbtn.TabStop = true;
-            this.Based_Rbtn.Text = "Based mode";
-            this.Based_Rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Based_Indexed_Rbtn
-            // 
-            this.Based_Indexed_Rbtn.AutoSize = true;
-            this.Based_Indexed_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Based_Indexed_Rbtn.Location = new System.Drawing.Point(487, 150);
-            this.Based_Indexed_Rbtn.Name = "Based_Indexed_Rbtn";
-            this.Based_Indexed_Rbtn.Size = new System.Drawing.Size(153, 23);
-            this.Based_Indexed_Rbtn.TabIndex = 51;
-            this.Based_Indexed_Rbtn.TabStop = true;
-            this.Based_Indexed_Rbtn.Text = "Based indexed mode";
-            this.Based_Indexed_Rbtn.UseVisualStyleBackColor = true;
-            // 
             // Command_History_Lbl
             // 
             this.Command_History_Lbl.AutoSize = true;
@@ -533,11 +502,90 @@ namespace Intel8086
             this.Command_History_Lbl.TabIndex = 52;
             this.Command_History_Lbl.Text = "Command history";
             // 
+            // Indexed_Rbtn
+            // 
+            this.Indexed_Rbtn.AutoSize = true;
+            this.Indexed_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Indexed_Rbtn.Location = new System.Drawing.Point(488, 79);
+            this.Indexed_Rbtn.Name = "Indexed_Rbtn";
+            this.Indexed_Rbtn.Size = new System.Drawing.Size(114, 23);
+            this.Indexed_Rbtn.TabIndex = 49;
+            this.Indexed_Rbtn.Text = "Indexed mode";
+            this.Indexed_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // Based_Rbtn
+            // 
+            this.Based_Rbtn.AutoSize = true;
+            this.Based_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Based_Rbtn.Location = new System.Drawing.Point(488, 125);
+            this.Based_Rbtn.Name = "Based_Rbtn";
+            this.Based_Rbtn.Size = new System.Drawing.Size(102, 23);
+            this.Based_Rbtn.TabIndex = 50;
+            this.Based_Rbtn.Text = "Based mode";
+            this.Based_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // Based_Indexed_Rbtn
+            // 
+            this.Based_Indexed_Rbtn.AutoSize = true;
+            this.Based_Indexed_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Based_Indexed_Rbtn.Location = new System.Drawing.Point(488, 175);
+            this.Based_Indexed_Rbtn.Name = "Based_Indexed_Rbtn";
+            this.Based_Indexed_Rbtn.Size = new System.Drawing.Size(153, 23);
+            this.Based_Indexed_Rbtn.TabIndex = 51;
+            this.Based_Indexed_Rbtn.Text = "Based indexed mode";
+            this.Based_Indexed_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // None_Rbtn
+            // 
+            this.None_Rbtn.AutoSize = true;
+            this.None_Rbtn.Checked = true;
+            this.None_Rbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.None_Rbtn.Location = new System.Drawing.Point(488, 30);
+            this.None_Rbtn.Name = "None_Rbtn";
+            this.None_Rbtn.Size = new System.Drawing.Size(60, 23);
+            this.None_Rbtn.TabIndex = 53;
+            this.None_Rbtn.TabStop = true;
+            this.None_Rbtn.Text = "None";
+            this.None_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // MemtoReg_Rbtn
+            // 
+            this.MemtoReg_Rbtn.AutoSize = true;
+            this.MemtoReg_Rbtn.Location = new System.Drawing.Point(0, 30);
+            this.MemtoReg_Rbtn.Name = "MemtoReg_Rbtn";
+            this.MemtoReg_Rbtn.Size = new System.Drawing.Size(126, 19);
+            this.MemtoReg_Rbtn.TabIndex = 55;
+            this.MemtoReg_Rbtn.Text = "Memory to register";
+            this.MemtoReg_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // RegToMem_Rbtn
+            // 
+            this.RegToMem_Rbtn.AutoSize = true;
+            this.RegToMem_Rbtn.Checked = true;
+            this.RegToMem_Rbtn.Location = new System.Drawing.Point(0, 0);
+            this.RegToMem_Rbtn.Name = "RegToMem_Rbtn";
+            this.RegToMem_Rbtn.Size = new System.Drawing.Size(129, 19);
+            this.RegToMem_Rbtn.TabIndex = 56;
+            this.RegToMem_Rbtn.TabStop = true;
+            this.RegToMem_Rbtn.Text = "Register to memory";
+            this.RegToMem_Rbtn.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.RegToMem_Rbtn);
+            this.panel1.Controls.Add(this.MemtoReg_Rbtn);
+            this.panel1.Location = new System.Drawing.Point(488, 231);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(143, 49);
+            this.panel1.TabIndex = 57;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 603);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.None_Rbtn);
             this.Controls.Add(this.Command_History_Lbl);
             this.Controls.Add(this.Based_Indexed_Rbtn);
             this.Controls.Add(this.Based_Rbtn);
@@ -582,6 +630,8 @@ namespace Intel8086
             this.Controls.Add(this.AX_Textbox);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -627,10 +677,14 @@ namespace Intel8086
         private System.Windows.Forms.Label BP_Lbl;
         private System.Windows.Forms.Label SP_Lbl;
         private System.Windows.Forms.Label DISP_Lbl;
+        private System.Windows.Forms.Label Command_History_Lbl;
         private System.Windows.Forms.RadioButton Indexed_Rbtn;
         private System.Windows.Forms.RadioButton Based_Rbtn;
         private System.Windows.Forms.RadioButton Based_Indexed_Rbtn;
-        private System.Windows.Forms.Label Command_History_Lbl;
+        private System.Windows.Forms.RadioButton None_Rbtn;
+        private System.Windows.Forms.RadioButton MemtoReg_Rbtn;
+        private System.Windows.Forms.RadioButton RegToMem_Rbtn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
