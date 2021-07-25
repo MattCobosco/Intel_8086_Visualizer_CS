@@ -104,6 +104,8 @@ namespace Intel8086
                             string commandAux = commandStringArr[1].ToLower();
                             PushUpdateStackPointer();
                             PushCommandStack(commandAux);
+                            UpdateBasePointer();
+                            ClearConsole();
                         }
                     }
                     else if (commandType == "pop")
@@ -111,13 +113,29 @@ namespace Intel8086
                         if (commandStringArr.Length > 2)
                         {
                             CommandTooManyArguments();
-                            ClearConsole();
                         }
                         else
                         {
                             string commandAux = commandStringArr[1].ToLower();
                             PopUpdateStackPointer();
                             PopCommandStack(commandAux);
+                            UpdateBasePointer();
+                            ClearConsole();
+                        }
+                    }
+                    else if (commandType == "set")
+                    {
+                        string commandAux1 = commandStringArr[1].ToLower();
+                        int commandAux2 = Convert.ToInt32(commandStringArr[2]);
+
+                        if (commandStringArr.Length > 3)
+                        {
+                            CommandTooManyArguments();
+                        }
+                        else
+                        {
+                            SetCommand(commandAux1, commandAux2);
+                           
                             ClearConsole();
                         }
                     }
@@ -130,6 +148,27 @@ namespace Intel8086
                 }
             }
             catch (IndexOutOfRangeException)
+            {
+                WrongCommand();
+            }
+        }
+
+        private void UpdateBasePointer()
+        {
+            BP_Textbox.Text = SP_Textbox.Text;
+        }
+
+        private void SetCommand(string commandAux1, int commandAux2) // fictional commands to set displacement and base pointer to desired values
+        {
+            if (commandAux1 == "disp")
+            {
+                DISP_Textbox.Text = commandAux2.ToString("X4");
+            }
+            else if (commandAux1 == "bp")
+            {
+                BP_Textbox.Text = commandAux2.ToString("X4");
+            }
+            else
             {
                 WrongCommand();
             }
@@ -172,7 +211,7 @@ namespace Intel8086
                 intelStack.Pop();
                 EqualizeX_HL();
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("Stack is empty, cannot POP.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -211,7 +250,7 @@ namespace Intel8086
                     WrongCommand();
                 }
             }
-            catch (System.InvalidOperationException)
+            catch (InvalidOperationException)
             {
 
             }
