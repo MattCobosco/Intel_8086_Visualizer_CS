@@ -364,7 +364,7 @@ namespace Intel8086
             this.CLI_History_ListBox.ItemHeight = 21;
             this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 351);
             this.CLI_History_ListBox.Name = "CLI_History_ListBox";
-            this.CLI_History_ListBox.Size = new System.Drawing.Size(203, 151);
+            this.CLI_History_ListBox.Size = new System.Drawing.Size(203, 214);
             this.CLI_History_ListBox.TabIndex = 34;
             // 
             // Command_Desc_Lbl
@@ -373,7 +373,7 @@ namespace Intel8086
             this.Command_Desc_Lbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Command_Desc_Lbl.Location = new System.Drawing.Point(288, 312);
             this.Command_Desc_Lbl.Name = "Command_Desc_Lbl";
-            this.Command_Desc_Lbl.Size = new System.Drawing.Size(502, 190);
+            this.Command_Desc_Lbl.Size = new System.Drawing.Size(502, 228);
             this.Command_Desc_Lbl.TabIndex = 35;
             this.Command_Desc_Lbl.Text = resources.GetString("Command_Desc_Lbl.Text");
             // 
@@ -537,7 +537,7 @@ namespace Intel8086
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 542);
+            this.ClientSize = new System.Drawing.Size(821, 603);
             this.Controls.Add(this.Command_History_Lbl);
             this.Controls.Add(this.Based_Indexed_Rbtn);
             this.Controls.Add(this.Based_Rbtn);

@@ -68,6 +68,7 @@ mov {register index} {value} - moves value to register
 xchg {register index} {register index} - exchanges values between registers
 push {X register index} - moves the value of a register to the stack
 pop {X register index} - moves the value from the stack to the register
-</value>
+
+set {disp/pb} - puts a requested value into the requested register</value>
   </data>
 </root>
