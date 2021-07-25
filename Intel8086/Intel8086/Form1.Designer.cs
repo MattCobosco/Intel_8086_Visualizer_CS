@@ -29,7 +29,6 @@ namespace Intel8086
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.AX_Textbox = new System.Windows.Forms.TextBox();
             this.BX_Textbox = new System.Windows.Forms.TextBox();
             this.CX_Textbox = new System.Windows.Forms.TextBox();
@@ -57,7 +56,6 @@ namespace Intel8086
             this.BL_Textbox = new System.Windows.Forms.TextBox();
             this.AL_Textbox = new System.Windows.Forms.TextBox();
             this.CLI_History_ListBox = new System.Windows.Forms.ListBox();
-            this.Command_Desc_Lbl = new System.Windows.Forms.Label();
             this.SI_Textbox = new System.Windows.Forms.TextBox();
             this.DI_Textbox = new System.Windows.Forms.TextBox();
             this.BP_Textbox = new System.Windows.Forms.TextBox();
@@ -367,26 +365,16 @@ namespace Intel8086
             this.CLI_History_ListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CLI_History_ListBox.FormattingEnabled = true;
             this.CLI_History_ListBox.ItemHeight = 21;
-            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 351);
+            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 334);
             this.CLI_History_ListBox.Name = "CLI_History_ListBox";
-            this.CLI_History_ListBox.Size = new System.Drawing.Size(203, 214);
+            this.CLI_History_ListBox.Size = new System.Drawing.Size(410, 214);
             this.CLI_History_ListBox.TabIndex = 34;
-            // 
-            // Command_Desc_Lbl
-            // 
-            this.Command_Desc_Lbl.AutoSize = true;
-            this.Command_Desc_Lbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Command_Desc_Lbl.Location = new System.Drawing.Point(288, 312);
-            this.Command_Desc_Lbl.Name = "Command_Desc_Lbl";
-            this.Command_Desc_Lbl.Size = new System.Drawing.Size(502, 228);
-            this.Command_Desc_Lbl.TabIndex = 35;
-            this.Command_Desc_Lbl.Text = resources.GetString("Command_Desc_Lbl.Text");
             // 
             // SI_Textbox
             // 
             this.SI_Textbox.Enabled = false;
             this.SI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SI_Textbox.Location = new System.Drawing.Point(690, 27);
+            this.SI_Textbox.Location = new System.Drawing.Point(517, 334);
             this.SI_Textbox.MaxLength = 4;
             this.SI_Textbox.Name = "SI_Textbox";
             this.SI_Textbox.ReadOnly = true;
@@ -398,7 +386,7 @@ namespace Intel8086
             // 
             this.DI_Textbox.Enabled = false;
             this.DI_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DI_Textbox.Location = new System.Drawing.Point(690, 76);
+            this.DI_Textbox.Location = new System.Drawing.Point(517, 379);
             this.DI_Textbox.MaxLength = 4;
             this.DI_Textbox.Name = "DI_Textbox";
             this.DI_Textbox.ReadOnly = true;
@@ -410,7 +398,7 @@ namespace Intel8086
             // 
             this.BP_Textbox.Enabled = false;
             this.BP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BP_Textbox.Location = new System.Drawing.Point(690, 123);
+            this.BP_Textbox.Location = new System.Drawing.Point(517, 426);
             this.BP_Textbox.MaxLength = 4;
             this.BP_Textbox.Name = "BP_Textbox";
             this.BP_Textbox.ReadOnly = true;
@@ -422,7 +410,7 @@ namespace Intel8086
             // 
             this.SP_Textbox.Enabled = false;
             this.SP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SP_Textbox.Location = new System.Drawing.Point(690, 172);
+            this.SP_Textbox.Location = new System.Drawing.Point(517, 475);
             this.SP_Textbox.MaxLength = 4;
             this.SP_Textbox.Name = "SP_Textbox";
             this.SP_Textbox.ReadOnly = true;
@@ -434,7 +422,7 @@ namespace Intel8086
             // 
             this.DISP_Textbox.Enabled = false;
             this.DISP_Textbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DISP_Textbox.Location = new System.Drawing.Point(690, 242);
+            this.DISP_Textbox.Location = new System.Drawing.Point(517, 519);
             this.DISP_Textbox.MaxLength = 4;
             this.DISP_Textbox.Name = "DISP_Textbox";
             this.DISP_Textbox.ReadOnly = true;
@@ -446,7 +434,7 @@ namespace Intel8086
             // 
             this.SI_Lbl.AutoSize = true;
             this.SI_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SI_Lbl.Location = new System.Drawing.Point(656, 30);
+            this.SI_Lbl.Location = new System.Drawing.Point(483, 337);
             this.SI_Lbl.Name = "SI_Lbl";
             this.SI_Lbl.Size = new System.Drawing.Size(23, 21);
             this.SI_Lbl.TabIndex = 44;
@@ -456,7 +444,7 @@ namespace Intel8086
             // 
             this.DI_Lbl.AutoSize = true;
             this.DI_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DI_Lbl.Location = new System.Drawing.Point(656, 79);
+            this.DI_Lbl.Location = new System.Drawing.Point(483, 382);
             this.DI_Lbl.Name = "DI_Lbl";
             this.DI_Lbl.Size = new System.Drawing.Size(25, 21);
             this.DI_Lbl.TabIndex = 45;
@@ -466,7 +454,7 @@ namespace Intel8086
             // 
             this.BP_Lbl.AutoSize = true;
             this.BP_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BP_Lbl.Location = new System.Drawing.Point(656, 129);
+            this.BP_Lbl.Location = new System.Drawing.Point(483, 429);
             this.BP_Lbl.Name = "BP_Lbl";
             this.BP_Lbl.Size = new System.Drawing.Size(28, 21);
             this.BP_Lbl.TabIndex = 46;
@@ -476,7 +464,7 @@ namespace Intel8086
             // 
             this.SP_Lbl.AutoSize = true;
             this.SP_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SP_Lbl.Location = new System.Drawing.Point(656, 178);
+            this.SP_Lbl.Location = new System.Drawing.Point(483, 479);
             this.SP_Lbl.Name = "SP_Lbl";
             this.SP_Lbl.Size = new System.Drawing.Size(28, 21);
             this.SP_Lbl.TabIndex = 47;
@@ -486,7 +474,7 @@ namespace Intel8086
             // 
             this.DISP_Lbl.AutoSize = true;
             this.DISP_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DISP_Lbl.Location = new System.Drawing.Point(641, 245);
+            this.DISP_Lbl.Location = new System.Drawing.Point(468, 522);
             this.DISP_Lbl.Name = "DISP_Lbl";
             this.DISP_Lbl.Size = new System.Drawing.Size(43, 21);
             this.DISP_Lbl.TabIndex = 48;
@@ -496,7 +484,7 @@ namespace Intel8086
             // 
             this.Command_History_Lbl.AutoSize = true;
             this.Command_History_Lbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Command_History_Lbl.Location = new System.Drawing.Point(76, 309);
+            this.Command_History_Lbl.Location = new System.Drawing.Point(44, 299);
             this.Command_History_Lbl.Name = "Command_History_Lbl";
             this.Command_History_Lbl.Size = new System.Drawing.Size(135, 21);
             this.Command_History_Lbl.TabIndex = 52;
@@ -583,7 +571,7 @@ namespace Intel8086
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(821, 603);
+            this.ClientSize = new System.Drawing.Size(671, 588);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.None_Rbtn);
             this.Controls.Add(this.Command_History_Lbl);
@@ -600,7 +588,6 @@ namespace Intel8086
             this.Controls.Add(this.BP_Textbox);
             this.Controls.Add(this.DI_Textbox);
             this.Controls.Add(this.SI_Textbox);
-            this.Controls.Add(this.Command_Desc_Lbl);
             this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
             this.Controls.Add(this.CL_Textbox);
@@ -666,7 +653,6 @@ namespace Intel8086
         private System.Windows.Forms.TextBox BL_Textbox;
         private System.Windows.Forms.TextBox AL_Textbox;
         private System.Windows.Forms.ListBox CLI_History_ListBox;
-        private System.Windows.Forms.Label Command_Desc_Lbl;
         private System.Windows.Forms.TextBox SI_Textbox;
         private System.Windows.Forms.TextBox DI_Textbox;
         private System.Windows.Forms.TextBox BP_Textbox;

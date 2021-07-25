@@ -57,18 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Command_Desc_Lbl.Text" xml:space="preserve">
-    <value>Available commands:
-
-zero - fills all registers with 0
-random - fills the entire register with random hex values
-
-mov {register index} {register index} - moves value from one register to the other
-mov {register index} {value} - moves value to register
-xchg {register index} {register index} - exchanges values between registers
-push {X register index} - moves the value of a register to the stack
-pop {X register index} - moves the value from the stack to the register
-
-set {disp/pb} - puts a requested value into the requested register</value>
-  </data>
 </root>

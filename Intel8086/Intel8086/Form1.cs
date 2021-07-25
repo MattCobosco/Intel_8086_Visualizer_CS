@@ -108,15 +108,35 @@ namespace Intel8086
                     }
                     else if (commandType == "xchg")
                     {
+                        string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
+                        string commandAux2 = commandStringArr[2].ToLower();
                         if (commandStringArr.Length > 3)
                         {
                             CommandTooManyArguments();
                         }
+                        else if (None_Rbtn.Checked)
+                        {
+
+                            XchgCommand(commandAux1, commandAux2);
+                        }
                         else
                         {
-                            string commandAux1 = commandStringArr[1].ToLower(); // get additional info from command
-                            string commandAux2 = commandStringArr[2].ToLower();
-                            XchgCommand(commandAux1, commandAux2);
+                            if (Indexed_Rbtn.Checked)
+                            {
+                                XchgIndexedReg(commandAux1, commandAux2);
+                            }
+                            else if (Based_Rbtn.Checked)
+                            {
+                                XchgBasedReg(commandAux1, commandAux2);
+                            }
+                            else if (Based_Indexed_Rbtn.Checked)
+                            {
+                                XchgBasedIndexedReg(commandAux1, commandAux2);
+                            }
+                            else
+                            {
+                                WrongCommand();
+                            }
                         }
                     }
                     else if (commandType == "push")
@@ -177,6 +197,181 @@ namespace Intel8086
             {
                 WrongCommand();
             }
+        }
+
+        private void XchgBasedIndexedReg(string commandAux1, string commandAux2)
+        {
+            int si = Convert.ToInt32(SI_Textbox.Text, 16);
+            int di = Convert.ToInt32(DI_Textbox.Text, 16);
+            int bp = Convert.ToInt32(BP_Textbox.Text, 16);
+            int bx = Convert.ToInt32(BX_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value;
+            string temp;
+
+            if (commandAux2 == "si+bp")
+            {
+                value = si + bp + disp;
+            }
+            else if (commandAux2 == "si+bx")
+            {
+                value = si + bx + disp;
+            }
+            else if (commandAux2 == "di+bp")
+            {
+                value = di + bp;
+            }
+            else if (commandAux2 == "di+bx")
+            {
+                value = di + bx;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (commandAux1 == "ax")
+            {
+                temp = AX_Textbox.Text;
+                AX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "bx")
+            {
+                temp = BX_Textbox.Text;
+                BX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "cx")
+            {
+                temp = CX_Textbox.Text;
+                CX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "dx")
+            {
+                intelMemory[value] = temp = DX_Textbox.Text;
+                DX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            EqualizeX_HL();
+        }
+
+        private void XchgBasedReg(string commandAux1, string commandAux2)
+        {
+            int bp = Convert.ToInt32(BP_Textbox.Text, 16);
+            int bx = Convert.ToInt32(BX_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value;
+            string temp;
+
+            if (commandAux2 == "bp")
+            {
+                value = bp + disp;
+            }
+            else if (commandAux2 == "bx")
+            {
+                value = bx + disp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (commandAux1 == "ax")
+            {
+                temp = AX_Textbox.Text;
+                AX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "bx")
+            {
+                temp = BX_Textbox.Text;
+                BX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "cx")
+            {
+                temp = CX_Textbox.Text;
+                CX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "dx")
+            {
+                intelMemory[value] = temp = DX_Textbox.Text;
+                DX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            EqualizeX_HL();
+        }
+
+        private void XchgIndexedReg(string commandAux1, string commandAux2)
+        {
+            int si = Convert.ToInt32(SI_Textbox.Text, 16);
+            int di = Convert.ToInt32(DI_Textbox.Text, 16);
+            int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
+            int value;
+            string temp;
+
+            if (commandAux2 == "si")
+            {
+                value = si + disp;
+            }
+            else if (commandAux2 == "di")
+            {
+                value = di + disp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            if (commandAux1 == "ax")
+            {
+                temp = AX_Textbox.Text;
+                AX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "bx")
+            {
+                temp = BX_Textbox.Text;
+                BX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "cx")
+            {
+                temp = CX_Textbox.Text;
+                CX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else if (commandAux1 == "dx")
+            {
+                intelMemory[value] = temp = DX_Textbox.Text;
+                DX_Textbox.Text = intelMemory[value];
+                intelMemory[value] = temp;
+            }
+            else
+            {
+                WrongCommand();
+                return;
+            }
+
+            EqualizeX_HL();
         }
 
         private void MovBasedIndexedReg(string commandAux1, string commandAux2)
@@ -328,6 +523,7 @@ namespace Intel8086
                 else
                 {
                     WrongCommand();
+                    return;
                 }
             }
 
@@ -339,7 +535,7 @@ namespace Intel8086
             int si = Convert.ToInt32(SI_Textbox.Text, 16);
             int di = Convert.ToInt32(DI_Textbox.Text, 16);
             int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
-            int value = 0;
+            int value;
 
             if (commandAux2 == "si")
             {
@@ -400,6 +596,7 @@ namespace Intel8086
                 else
                 {
                     WrongCommand();
+                    return;
                 }
             }
 
@@ -432,6 +629,7 @@ namespace Intel8086
             else
             {
                 WrongCommand();
+                return;
             }
         }
 
@@ -1238,7 +1436,7 @@ namespace Intel8086
             BX_Textbox.Text = random.Next(0, 65536).ToString("X4");
             CX_Textbox.Text = random.Next(0, 65536).ToString("X4");
             DX_Textbox.Text = random.Next(0, 65536).ToString("X4");
-            SI_Textbox.Text = random.Next(0, 65536).ToString("X4"); 
+            SI_Textbox.Text = random.Next(0, 65536).ToString("X4");
             DI_Textbox.Text = random.Next(0, 65536).ToString("X4");
 
             EqualizeX_HL();
