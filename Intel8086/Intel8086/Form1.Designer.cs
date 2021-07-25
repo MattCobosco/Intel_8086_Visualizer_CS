@@ -373,7 +373,7 @@ namespace Intel8086
             this.Command_Desc_Lbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Command_Desc_Lbl.Location = new System.Drawing.Point(288, 312);
             this.Command_Desc_Lbl.Name = "Command_Desc_Lbl";
-            this.Command_Desc_Lbl.Size = new System.Drawing.Size(502, 133);
+            this.Command_Desc_Lbl.Size = new System.Drawing.Size(502, 190);
             this.Command_Desc_Lbl.TabIndex = 35;
             this.Command_Desc_Lbl.Text = resources.GetString("Command_Desc_Lbl.Text");
             // 
