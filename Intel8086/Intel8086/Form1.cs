@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Intel8086
 {
@@ -8,7 +9,7 @@ namespace Intel8086
     {
         Stack<string> intelStack = new Stack<string>();
         string[] intelMemory = new string[500000];
-
+        List<string> commandHistory = new List<string>();
 
         public Form1()
         {
@@ -28,9 +29,7 @@ namespace Intel8086
                 {
                     string command = CLI_Textbox.Text; // get the command as string
 
-                    CLI_History_ListBox.Items.Add(CLI_Textbox.Text); // command is saved to the history list box
-
-                    ReverseListBoxOrder(); // most recent command is always on top
+                    CLI_History_Listbox.Items.Insert(0, CLI_Textbox.Text);// command is saved to the top of history list box
 
                     string[] commandStringArr = command.Split(' '); // split it into string array
 
@@ -209,19 +208,19 @@ namespace Intel8086
             int value;
             string temp;
 
-            if (commandAux2 == "si+bp")
+            if (commandAux2 == "bp+si")
             {
                 value = si + bp + disp;
             }
-            else if (commandAux2 == "si+bx")
+            else if (commandAux2 == "bx+si")
             {
                 value = si + bx + disp;
             }
-            else if (commandAux2 == "di+bp")
+            else if (commandAux2 == "bp+di")
             {
                 value = di + bp;
             }
-            else if (commandAux2 == "di+bx")
+            else if (commandAux2 == "bx+di")
             {
                 value = di + bx;
             }
@@ -262,6 +261,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void XchgBasedReg(string commandAux1, string commandAux2)
@@ -317,6 +317,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void XchgIndexedReg(string commandAux1, string commandAux2)
@@ -372,6 +373,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void MovBasedIndexedReg(string commandAux1, string commandAux2)
@@ -383,19 +385,19 @@ namespace Intel8086
             int disp = Convert.ToInt32(DISP_Textbox.Text, 16);
             int value;
 
-            if (commandAux2 == "si+bp")
+            if (commandAux2 == "bp+si")
             {
                 value = si + bp + disp;
             }
-            else if (commandAux2 == "si+bx")
+            else if (commandAux2 == "bx+si")
             {
                 value = si + bx + disp;
             }
-            else if (commandAux2 == "di+bp")
+            else if (commandAux2 == "bp+si")
             {
                 value = di + bp;
             }
-            else if (commandAux2 == "di+bx")
+            else if (commandAux2 == "bx+di")
             {
                 value = di + bx;
             }
@@ -454,6 +456,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void MovBasedReg(string commandAux1, string commandAux2)
@@ -502,7 +505,7 @@ namespace Intel8086
                     return;
                 }
             }
-            else
+            else if(RegToMem_Rbtn.Checked)
             {
                 if (commandAux1 == "ax")
                 {
@@ -528,6 +531,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void MovIndexedReg(string commandAux1, string commandAux2)
@@ -601,6 +605,7 @@ namespace Intel8086
             }
 
             EqualizeX_HL();
+            ClearConsole();
         }
 
         private void UpdateBasePointer()
@@ -1438,6 +1443,8 @@ namespace Intel8086
             DX_Textbox.Text = random.Next(0, 65536).ToString("X4");
             SI_Textbox.Text = random.Next(0, 65536).ToString("X4");
             DI_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            DISP_Textbox.Text = random.Next(0, 65536).ToString("X4");
+            BP_Textbox.Text = random.Next(0, 65536).ToString("X4");
 
             EqualizeX_HL();
         }
@@ -1496,16 +1503,6 @@ namespace Intel8086
         private void ClearConsole()
         {
             CLI_Textbox.Text = "";
-        }
-
-        private void ReverseListBoxOrder() // reverses the order of items in the history to show the most recent command on top
-        {
-            for (int i = 0; i < CLI_History_ListBox.Items.Count / 2; i++)
-            {
-                var tmp = CLI_History_ListBox.Items[i];
-                CLI_History_ListBox.Items[i] = CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1];
-                CLI_History_ListBox.Items[CLI_History_ListBox.Items.Count - i - 1] = tmp;
-            }
         }
 
         // Errors

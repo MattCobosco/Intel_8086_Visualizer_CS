@@ -55,7 +55,6 @@ namespace Intel8086
             this.CL_Textbox = new System.Windows.Forms.TextBox();
             this.BL_Textbox = new System.Windows.Forms.TextBox();
             this.AL_Textbox = new System.Windows.Forms.TextBox();
-            this.CLI_History_ListBox = new System.Windows.Forms.ListBox();
             this.SI_Textbox = new System.Windows.Forms.TextBox();
             this.DI_Textbox = new System.Windows.Forms.TextBox();
             this.BP_Textbox = new System.Windows.Forms.TextBox();
@@ -74,6 +73,7 @@ namespace Intel8086
             this.MemtoReg_Rbtn = new System.Windows.Forms.RadioButton();
             this.RegToMem_Rbtn = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CLI_History_Listbox = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -360,16 +360,6 @@ namespace Intel8086
             this.AL_Textbox.TabIndex = 30;
             this.AL_Textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // CLI_History_ListBox
-            // 
-            this.CLI_History_ListBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CLI_History_ListBox.FormattingEnabled = true;
-            this.CLI_History_ListBox.ItemHeight = 21;
-            this.CLI_History_ListBox.Location = new System.Drawing.Point(44, 334);
-            this.CLI_History_ListBox.Name = "CLI_History_ListBox";
-            this.CLI_History_ListBox.Size = new System.Drawing.Size(410, 214);
-            this.CLI_History_ListBox.TabIndex = 34;
-            // 
             // SI_Textbox
             // 
             this.SI_Textbox.Enabled = false;
@@ -567,11 +557,22 @@ namespace Intel8086
             this.panel1.Size = new System.Drawing.Size(143, 49);
             this.panel1.TabIndex = 57;
             // 
+            // CLI_History_Listbox
+            // 
+            this.CLI_History_Listbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CLI_History_Listbox.FormattingEnabled = true;
+            this.CLI_History_Listbox.ItemHeight = 21;
+            this.CLI_History_Listbox.Location = new System.Drawing.Point(44, 337);
+            this.CLI_History_Listbox.Name = "CLI_History_Listbox";
+            this.CLI_History_Listbox.Size = new System.Drawing.Size(410, 214);
+            this.CLI_History_Listbox.TabIndex = 59;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 588);
+            this.Controls.Add(this.CLI_History_Listbox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.None_Rbtn);
             this.Controls.Add(this.Command_History_Lbl);
@@ -588,7 +589,6 @@ namespace Intel8086
             this.Controls.Add(this.BP_Textbox);
             this.Controls.Add(this.DI_Textbox);
             this.Controls.Add(this.SI_Textbox);
-            this.Controls.Add(this.CLI_History_ListBox);
             this.Controls.Add(this.DL_Textbox);
             this.Controls.Add(this.CL_Textbox);
             this.Controls.Add(this.BL_Textbox);
@@ -652,7 +652,6 @@ namespace Intel8086
         private System.Windows.Forms.TextBox CL_Textbox;
         private System.Windows.Forms.TextBox BL_Textbox;
         private System.Windows.Forms.TextBox AL_Textbox;
-        private System.Windows.Forms.ListBox CLI_History_ListBox;
         private System.Windows.Forms.TextBox SI_Textbox;
         private System.Windows.Forms.TextBox DI_Textbox;
         private System.Windows.Forms.TextBox BP_Textbox;
@@ -671,6 +670,7 @@ namespace Intel8086
         private System.Windows.Forms.RadioButton MemtoReg_Rbtn;
         private System.Windows.Forms.RadioButton RegToMem_Rbtn;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListBox CLI_History_Listbox;
     }
 }
 
