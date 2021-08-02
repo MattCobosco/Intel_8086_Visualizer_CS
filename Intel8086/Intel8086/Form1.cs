@@ -1518,7 +1518,7 @@ namespace Intel8086
 
         private void CommandTooManyArguments()
         {
-            MessageBox.Show("Command has too many arguments. \nCheck available commands and try again.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Wrong command. \nCommand has too many arguments.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
